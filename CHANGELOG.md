@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.0 (2026-11-19) Phase 6b: Claude app test
+
+- Ran hamu-security-privacy in the Claude app on the same website and compared it with the Claude Code run. The app found a consent-withdrawal race, a consent record without date or version, a missing right to restriction and missing legal basis per purpose, and DNSSEC that the Claude Code run reported wrongly. The Claude Code run found the missing HTTP redirect the app could not measure.
+- SP.CONSENT.WITHDRAW now tests accept then withdraw, with two timings, and reads the consent script. SP.CONSENT.RECORD checks date, version and expiry of the stored choice. SP.DNS.DNSSEC checks the DS record at the parent. SP.PRIVACY.CONTENT ticks each right and the legal basis per purpose.
+- SP.CONSENT.REJECT: a style-only difference is `medium`, so it no longer forces a no-go.
+- Run protocol: browser hygiene (isolated context, never clear the user's storage without asking, profile leftovers are not evidence, accept tests send real analytics hits, repeat consent flows with two timings) and DNS over HTTPS for the Claude app.
+- SKILL.md status lines carry the plugin version, and CI checks it, so `skill_version` in findings is correct.
+- `testing/claude-app-test.md`: current upload path (Customize, Skills).
+
 ## 0.8.0 (2026-11-19) Phase 6: real-target test
 
 - Tested all four skills and the roll-up on a real website (passive) and the security code checks on this repository, in Claude Code. Results and lessons in `testing/phase-6-results.md`, Claude app test steps in `testing/claude-app-test.md`.

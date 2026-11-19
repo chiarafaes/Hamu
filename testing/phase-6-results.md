@@ -10,7 +10,7 @@ No personal data or target names are recorded here. Full reports stay in the git
 |---|---|---|---|
 | A | Public website of a small Belgian service business (10 pages, two languages) | Repository owner, permission given | all four + roll-up |
 | B | This repository (Python scripts, CI workflow, no dependencies) | Repository owner | hamu-security-privacy, code checks only |
-| C | Claude app run of one skill | Repository owner runs it, see `claude-app-test.md` | pending |
+| C | Claude app run of hamu-security-privacy on target A | Repository owner | done |
 
 ## Target A in numbers
 
@@ -40,6 +40,23 @@ No secrets (pattern search, gitleaks not installed), no unsafe Python calls, no 
 | 12 | Withdrawal check did not consider free cancellation without payment | Calibration | Warn with legal review in that case. |
 | 13 | No sector value for small service businesses | Schema | Added retail, hospitality, personal_services, professional_services (non-breaking). |
 
+## Target C: Claude app versus Claude Code
+
+Same skill, same site, same day. The app used the built-in browser, DNS over HTTPS and the SSL Labs website. Its shell had no network access to the target, and the fixed path probe was blocked in the session. Both runs marked what they could not test.
+
+| Area | What the comparison showed | Change in Hamu |
+|---|---|---|
+| Scoring | Both runs scored with the same `severity.md` rules; totals differed only because the app produced more findings | none needed |
+| Verdict | The app summary said go, but the rules gave no-go because a style-only banner finding carried the default severity high | SP.CONSENT.REJECT severity for that case set to medium |
+| Consent withdrawal | One runtime saw a timing-dependent result the other did not | Flow repeated with two timings, consent script read |
+| Consent record | Only one run looked at the stored consent value | New passive step: date, version, expiry |
+| Privacy notice | One run missed an item on the checklist | Rights and legal basis ticked one by one |
+| DNSSEC | One run used a method that hides signatures | DS record at the parent, or DoH AD flag |
+| Things the app could not measure (redirect with cached HSTS, path probes) | Marked needs_manual or not_tested with a test script | none needed |
+| Side effects | The app cleared site storage in the user's browser and sent an analytics hit | Browser hygiene rules in the run protocol |
+| Leftover data in the user's browser profile | Reported as a possible finding with low confidence | Profile leftovers are not evidence |
+| skill_version | The app wrote an old version from a stale SKILL.md status line | Status lines synced, CI check added |
+
 ## Verification items resolved
 
 - AI Omnibus: Regulation (EU) 2026/1744, Official Journal 24 July 2026, in force 27 July 2026.
@@ -49,7 +66,6 @@ No secrets (pattern search, gitleaks not installed), no unsafe Python calls, no 
 
 ## Not covered
 
-- Claude app run (target C) is pending.
 - Screen reader and full keyboard walk-through (needs a human).
 - Field Core Web Vitals (no CrUX data for a low-traffic site).
 - Google Business Profile and Search Console (need the owner).

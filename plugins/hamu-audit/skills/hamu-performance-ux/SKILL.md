@@ -7,7 +7,7 @@ description: Audit a website or app for performance, UX and conversion: Core Web
 
 Performance, usability and conversion checks. Owns every check with prefix `PX.`. Performance is measured against thresholds. UX is scored with a fixed 0 to 2 rubric, so results are repeatable.
 
-> Status: 0.5.0 (phase 3). Not yet tested on real targets (phase 6).
+> Status: 0.9.0. Tested on a real website in Claude Code and in the Claude app (security and privacy skill). Write this version as `skill_version` in the findings file.
 
 Speed and UX findings are best practice, not legal requirements. Legal issues seen on the way (dark patterns, hidden costs) go to hamu-security-privacy.
 

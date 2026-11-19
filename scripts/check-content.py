@@ -6,9 +6,10 @@ Usage: python3 scripts/check-content.py
 - No em-dashes in Markdown, JSON or SKILL.md content.
 - hamu-accessibility checks.md covers every WCAG 2.2 level A and AA criterion.
 - every rubric (R) check in hamu-performance-ux and hamu-seo-visibility has rubric examples.
+- every SKILL.md status line names the plugin version from plugin.json.
 No third-party dependencies.
 """
-import pathlib, re, sys
+import json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PLUGIN = ROOT / "plugins/hamu-audit"
@@ -83,6 +84,12 @@ for skill, (prefix, rubric_files, exempt) in RUBRIC_SKILLS.items():
         check_id, how = cols[1], cols[5] if len(cols) > 5 else ""
         if "R" in how.split() and not check_id.startswith(exempt or ("\0",)) and f"| {check_id} |" not in rubric_text:
             fail(catalogue, f"{check_id} is a rubric check without rubric examples")
+
+plugin_version = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())["version"]
+for skill_md in sorted(PLUGIN.glob("skills/*/SKILL.md")):
+    m = re.search(r"^> Status: ([0-9]+\.[0-9]+\.[0-9]+)", skill_md.read_text(encoding="utf-8"), re.M)
+    if not m or m.group(1) != plugin_version:
+        fail(skill_md, f"status line must start with the plugin version {plugin_version}")
 
 if bad:
     sys.exit(1)

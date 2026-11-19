@@ -7,7 +7,7 @@ description: Audit a website, web app, API or mobile app for security and privac
 
 Security and privacy readiness checks with EU and Belgian depth. Owns every check with prefix `SP.`.
 
-> Status: 0.3.0 (phase 1). EU and Belgian law, technical baseline, global privacy laws, app store rules and certification readiness views are in place. Not yet tested on real targets (phase 6).
+> Status: 0.9.0. Tested on a real website in Claude Code and in the Claude app (security and privacy skill). Write this version as `skill_version` in the findings file.
 
 This is a readiness check, not legal advice or a certification. Never write "compliant" or "certified".
 

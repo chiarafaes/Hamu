@@ -7,7 +7,7 @@ description: Audit a website for search and AI visibility: technical SEO, conten
 
 Search and AI visibility checks. Owns every check with prefix `SEO.`. Technical checks come from a polite crawl. Content, trust and AI visibility use a fixed 0 to 2 rubric.
 
-> Status: 0.6.0 (phase 4). Not yet tested on real targets (phase 6).
+> Status: 0.9.0. Tested on a real website in Claude Code and in the Claude app (security and privacy skill). Write this version as `skill_version` in the findings file.
 
 Never promise rankings, traffic or citations by AI assistants. Search engine rules are not law.
 

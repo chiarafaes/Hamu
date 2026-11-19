@@ -51,7 +51,7 @@ Before a new run of the same skill, move the previous findings file to `history/
 | Dependency vulnerabilities | `npm audit`, `pip-audit`, `osv-scanner` | Read lockfiles, match against known advisories with lower confidence | not_tested |
 | Static analysis | `semgrep`, `gitleaks` / `trufflehog` | Pattern search in code | Lower confidence |
 | TLS details | `openssl s_client`, `testssl.sh` | Browser security info, SSL Labs page in browser | Header-level checks only |
-| DNS (SPF, DKIM, DMARC) | `dig` | Web DNS lookup page in browser | not_tested |
+| DNS (SPF, DKIM, DMARC, DNSSEC) | `dig` (DNSSEC: `dig DS <domain>` at the parent, not `+short` answers) | DNS over HTTPS in the browser (dns.google/resolve, AD flag for DNSSEC) | not_tested |
 | AI visibility (GEO) | Prompt set run by the user or via connected tools | Same | Provide the prompt set and a tracking sheet |
 
 Rules:
@@ -66,6 +66,13 @@ Rules:
 - Never submit real forms on production (no orders, no contact form spam). Inspect them.
 - Evidence is redacted: no passwords, tokens, API keys, session ids, full personal data. Show the first 4 characters of a secret and its location only.
 - No copyrighted control text from ISO, AICPA, PCI SSC. Ids and own-words paraphrase only.
+
+## Browser hygiene
+
+- Test in a fresh, isolated browser context (new Playwright context, incognito window, or a separate profile). Never clear or change the user's own cookies or storage for the target without asking first.
+- Cookies or storage already present in the user's profile are not evidence about the site. Only what appears in a clean context counts. Old values may come from earlier site versions or other tools.
+- Testing "accept" sends real analytics hits. Say so in the report, and test accept only in an isolated context.
+- Consent flows can race with scripts that are still running. Repeat flows at least twice with different timing (right after load, and after the page settles) and read the consent script when results differ.
 
 ## Guardrails mode
 
