@@ -4,7 +4,7 @@ Audit skills for Claude that check websites, web apps and mobile apps for securi
 
 Each skill works on its own. Used together they share one scope, never check the same thing twice, and merge into one layered report.
 
-> **Status: 0.6.0, phase 4.** The four audit skills have their checks. The roll-up is being built, and nothing has been tested on real targets yet. The other skills are being built. Not tested on real targets yet (phase 6).
+> **Status: 0.7.0, phase 5.** All five skills are built. Nothing has been tested on real targets yet (phase 6), so do not rely on it for real audits. The other skills are being built. Not tested on real targets yet (phase 6).
 
 ## Free to use, not for sale
 
@@ -64,10 +64,12 @@ plugins/hamu-audit/
 scripts/sync-shared.sh
 scripts/validate.py
 scripts/check-content.py
+plugins/hamu-audit/skills/hamu-audit-rollup/scripts/   rollup.py, render_md.py, render_html.py
+tests/rollup/      fixtures and unit tests for the roll-up
 .github/workflows/ci.yml
 ```
 
-Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI (`.github/workflows/ci.yml`) runs on every pull request: `scripts/sync-shared.sh --check` plus `git diff --exit-code` (skill copies match the source), `scripts/validate.py` (JSON examples match the schemas) and `scripts/check-content.py` (reference front matter, no em-dashes).
+Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI (`.github/workflows/ci.yml`) runs on every pull request: `scripts/sync-shared.sh --check` plus `git diff --exit-code` (skill copies match the source), `scripts/validate.py` (JSON examples match the schemas) and `scripts/check-content.py` (reference front matter, no em-dashes, WCAG and rubric coverage), schema validation of the roll-up fixtures, and the roll-up unit tests (`python3 -m unittest discover -s tests/rollup`).
 
 ## Contributing and questions
 

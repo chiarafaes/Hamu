@@ -31,5 +31,11 @@ jobs:
       - name: JSON examples match schemas
         run: python3 scripts/validate.py
 
-      - name: Content rules (front matter, no em-dashes)
+      - name: Content rules (front matter, no em-dashes, coverage)
         run: python3 scripts/check-content.py
+
+      - name: Roll-up fixtures match schemas
+        run: python3 scripts/validate.py tests/rollup/fixtures/audit
+
+      - name: Roll-up unit tests
+        run: python3 -m unittest discover -s tests/rollup -v

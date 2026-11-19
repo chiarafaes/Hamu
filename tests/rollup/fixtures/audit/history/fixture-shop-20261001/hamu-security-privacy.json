@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-security-privacy",
+  "skill_version": "0.6.0",
+  "audit_id": "fixture-shop-20261001",
+  "run": {
+    "started_at": "2026-10-01T10:00:00+02:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl"
+    ],
+    "tools_missing": []
+  },
+  "findings": [
+    {
+      "id": "SP.HDR.CSP#bbbbbbbb",
+      "check_id": "SP.HDR.CSP",
+      "owner_skill": "hamu-security-privacy",
+      "title": "No Content-Security-Policy",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for No Content-Security-Policy.",
+      "detail_technical": "Technical detail for No Content-Security-Policy.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.HDR.CSP#bbbbbbbb"
+        }
+      ],
+      "fix": {
+        "summary": "Fix No Content-Security-Policy",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.TLS.HSTS#77777777",
+      "check_id": "SP.TLS.HSTS",
+      "owner_skill": "hamu-security-privacy",
+      "title": "HSTS missing",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for HSTS missing.",
+      "detail_technical": "Technical detail for HSTS missing.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.TLS.HSTS#77777777"
+        }
+      ],
+      "fix": {
+        "summary": "Fix HSTS missing",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    }
+  ]
+}

@@ -51,12 +51,12 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[A-Z]{2,4}(\\.[A-Z0-9-]+)+#[a-f0-9]{8}$",
+          "pattern": "^(SP|A11Y|PX|SEO)(\\.[A-Z0-9-]+)+#[a-f0-9]{8}$",
           "description": "check_id + '#' + first 8 hex chars of sha256(check_id + normalised location). Stable across runs, so re-audits can diff."
         },
         "check_id": {
           "type": "string",
-          "pattern": "^[A-Z]{2,4}(\\.[A-Z0-9-]+)+$",
+          "pattern": "^(SP|A11Y|PX|SEO)(\\.[A-Z0-9-]+)+$",
           "description": "From the ownership matrix, e.g. SP.HDR.HSTS, A11Y.IMG.ALT, PX.CWV.LCP, SEO.CRAWL.ROBOTS."
         },
         "owner_skill": { "$ref": "#/$defs/skill" },

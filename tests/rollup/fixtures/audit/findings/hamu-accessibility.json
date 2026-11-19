@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-accessibility",
+  "skill_version": "0.7.0",
+  "audit_id": "fixture-shop-20261119",
+  "run": {
+    "started_at": "2026-11-19T10:00:00+01:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl"
+    ],
+    "tools_missing": []
+  },
+  "findings": [
+    {
+      "id": "A11Y.IMG.ALT#11111111",
+      "check_id": "A11Y.IMG.ALT",
+      "owner_skill": "hamu-accessibility",
+      "title": "Product images without alt text",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Product images without alt text.",
+      "detail_technical": "Technical detail for Product images without alt text.",
+      "frameworks": [
+        {
+          "id": "WCAG22",
+          "ref": "1.1.1",
+          "level": "A",
+          "relation": "requirement"
+        },
+        {
+          "id": "EAA",
+          "ref": "Annex I",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.IMG.ALT#11111111"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Product images without alt text",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "A11Y.COLOR.CONTRAST#22222222",
+      "check_id": "A11Y.COLOR.CONTRAST",
+      "owner_skill": "hamu-accessibility",
+      "title": "Low contrast on hero text",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "low",
+      "method": "automated",
+      "summary_plain": "Plain summary for Low contrast on hero text.",
+      "detail_technical": "Technical detail for Low contrast on hero text.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.COLOR.CONTRAST#22222222"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Low contrast on hero text",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+      "check_id": "SP.CONSENT.PRE-TRACK",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Analytics fire before consent",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Analytics fire before consent.",
+      "detail_technical": "Technical detail for Analytics fire before consent.",
+      "frameworks": [
+        {
+          "id": "GDPR",
+          "ref": "Art. 6",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/products",
+          "snippet": "evidence SP.CONSENT.PRE-TRACK#aaaaaaaa"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Analytics fire before consent",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_by": "hamu-accessibility"
+    },
+    {
+      "id": "A11Y.KBD.TRAP#33333333",
+      "check_id": "A11Y.KBD.TRAP",
+      "owner_skill": "hamu-accessibility",
+      "title": "No keyboard trap",
+      "status": "pass",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for No keyboard trap.",
+      "detail_technical": "Technical detail for No keyboard trap.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.KBD.TRAP#33333333"
+        }
+      ],
+      "fix": {
+        "summary": "Fix No keyboard trap",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    }
+  ]
+}

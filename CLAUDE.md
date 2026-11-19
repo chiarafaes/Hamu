@@ -10,6 +10,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
   - `hamu-performance-ux` (prefix `PX.`)
   - `hamu-seo-visibility` (prefix `SEO.`)
   - `hamu-audit-rollup` (Markdown, self-contained HTML dashboard, Word/PDF, go/no-go)
+- Roll-up logic lives in `skills/hamu-audit-rollup/scripts/` (standard library only, Python 3.9+). Change it together with `tests/rollup/` and run `python3 -m unittest discover -s tests/rollup`. Regenerate fixtures with `tests/rollup/make_fixtures.py`.
 - Source of truth for shared rules: `plugins/hamu-audit/shared/`. Never edit `skills/*/references/_shared/` by hand. After changing shared files run `scripts/sync-shared.sh`, then `scripts/sync-shared.sh --check`, `python3 scripts/validate.py` and `python3 scripts/check-content.py`. CI runs the same checks on every PR.
 - Every skill follows the shared contract: `intake.md`, `applicability-matrix.md`, `ownership-matrix.md`, `severity.md`, `run-protocol.md`, `report-template.md`, and writes JSON matching `finding.schema.json` / `context.schema.json`.
 - One owner per check. Overlaps are decided in `ownership-matrix.md`. Add a row there before adding a check that another skill could also notice.
@@ -47,7 +48,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [x] Phase 2: hamu-accessibility (0.4.0)
 - [x] Phase 3: hamu-performance-ux (0.5.0)
 - [x] Phase 4: hamu-seo-visibility (0.6.0)
-- [ ] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers)
+- [x] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers) (0.7.0)
 - [ ] Phase 6: test on 2-3 real targets (URL and codebase, Claude Code and Claude app)
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
 

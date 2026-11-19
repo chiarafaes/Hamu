@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "fixture-shop-20261119",
+  "created_at": "2026-11-19T09:00:00+01:00",
+  "report_language": "en",
+  "target": {
+    "type": "url",
+    "name": "Fixture Shop",
+    "urls": [
+      "https://shop.example.be"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "languages": [
+      "nl",
+      "fr"
+    ]
+  },
+  "permission": {
+    "owner_confirmed": true,
+    "active_testing_allowed": false
+  },
+  "jurisdiction": {
+    "established_in": [
+      "BE"
+    ],
+    "users_in": [
+      "BE",
+      "EU"
+    ],
+    "public_sector": false
+  },
+  "product": {
+    "audience": "B2C",
+    "sells_online": true,
+    "payments": "hosted_redirect"
+  },
+  "organisation": {
+    "size": "small",
+    "role": "owner_of_product",
+    "goal": "pre_launch",
+    "certification_targets": []
+  },
+  "applicable_frameworks": [
+    {
+      "id": "GDPR",
+      "status": "applies",
+      "reason": "Established in BE"
+    },
+    {
+      "id": "EPRIVACY-BE",
+      "status": "applies",
+      "reason": "Tracking detected, BE users"
+    },
+    {
+      "id": "ASVS5",
+      "status": "applies",
+      "reason": "Baseline"
+    },
+    {
+      "id": "WCAG22",
+      "status": "applies",
+      "reason": "Always"
+    },
+    {
+      "id": "EAA",
+      "status": "applies",
+      "reason": "B2C e-commerce in EU"
+    },
+    {
+      "id": "CWV",
+      "status": "applies",
+      "reason": "Web target"
+    },
+    {
+      "id": "HIPAA",
+      "status": "not_applicable",
+      "reason": "No US health data"
+    }
+  ]
+}

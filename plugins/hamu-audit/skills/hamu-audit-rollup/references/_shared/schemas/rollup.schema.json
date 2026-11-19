@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hamu.dev/schemas/rollup.schema.json",
+  "title": "Hamu roll-up",
+  "description": "Written by hamu-audit-rollup to .audit/reports/hamu-audit.json. Input for the Markdown and HTML renderers and for re-audit tooling. Findings keep the finding.schema.json fields plus reported_in and merged_from.",
+  "type": "object",
+  "required": ["schema_version", "audit_id", "generated_at", "overall", "skills", "top_actions", "needs_confirmation", "cross_skill", "frameworks", "limitations", "diff", "findings"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "audit_id": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "report_language": {"type": "string"},
+    "target": {"type": "object"},
+    "testing": {"type": "object"},
+    "goal": {"type": ["string", "null"]},
+    "overall": {
+      "type": "object",
+      "required": ["score", "verdict", "reasons"],
+      "properties": {
+        "score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+        "verdict": {"enum": ["go", "go_with_conditions", "no_go"]},
+        "reasons": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["skill", "ran", "score", "checks_run", "not_tested", "open_by_severity", "areas"],
+        "properties": {
+          "skill": {"enum": ["hamu-security-privacy", "hamu-accessibility", "hamu-performance-ux", "hamu-seo-visibility"]},
+          "ran": {"type": "boolean"},
+          "skill_version": {"type": ["string", "null"]},
+          "score": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+          "checks_run": {"type": "integer", "minimum": 0},
+          "not_tested": {"type": "integer", "minimum": 0},
+          "open_by_severity": {"type": "object"},
+          "status": {"type": "object"},
+          "areas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["area", "score", "checks_run"],
+              "properties": {
+                "area": {"type": "string"},
+                "score": {"type": "integer", "minimum": 0, "maximum": 100},
+                "checks_run": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      }
+    },
+    "top_actions": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {"type": "object", "required": ["id", "title", "severity"]}
+    },
+    "needs_confirmation": {"type": "array", "items": {"type": "string"}},
+    "cross_skill": {"type": "array", "items": {"type": "object", "required": ["id", "reported_in"]}},
+    "frameworks": {"type": "array", "items": {"type": "object", "required": ["id", "status"]}},
+    "limitations": {
+      "type": "object",
+      "required": ["tools_missing", "stale_references", "skills_not_run"]
+    },
+    "diff": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["previous_audit_id", "fixed", "new", "still_open", "not_rechecked"],
+          "properties": {
+            "fixed": {"type": "array"},
+            "new": {"type": "array"},
+            "still_open": {"type": "array"},
+            "not_rechecked": {"type": "array"}
+          }
+        }
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "check_id", "owner_skill", "title", "status", "severity", "confidence", "reported_in"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(SP|A11Y|PX|SEO)(\\.[A-Z0-9-]+)+#[a-f0-9]{8}$"},
+          "reported_in": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+        }
+      }
+    }
+  }
+}
