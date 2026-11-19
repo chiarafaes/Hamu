@@ -30,10 +30,10 @@ Applies to almost every business site of an organisation established in Belgium.
 
 Must be easy to find (footer or imprint page, reachable from every page):
 
-1. Company name and legal form (BV/SRL, NV/SA, CommV/SComm ...).
+1. Company name and legal form (BV/SRL, NV/SA, CommV/SComm ...). Sole trader: own name plus trade name ("<name>, trading as <trade name>"), no legal form.
 2. Registered office address.
 3. Enterprise number (KBO/BCE), format `0xxx.xxx.xxx` or `1xxx.xxx.xxx`. Checksum: the last two digits equal 97 minus (first eight digits mod 97).
-4. The words "RPR" / "RPM" (rechtspersonenregister / registre des personnes morales) followed by the court of the registered office.
+4. Legal persons only: the words "RPR" / "RPM" (rechtspersonenregister / registre des personnes morales) followed by the court of the registered office. Not for natural persons.
 5. Email address and a way of direct contact.
 6. VAT number where VAT registered (in Belgium usually `BE` + enterprise number).
 7. For regulated professions: professional body, title, country that granted it, rules that apply.

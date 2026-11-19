@@ -45,3 +45,4 @@ Core Web Vitals are part of Google's page experience signals. They count, but re
 - State the source and date of every number ("CrUX, 28 days to 2026-11-15, mobile p75").
 - Lab numbers vary between runs. Run Lighthouse 3 times per page and report the median.
 - Name the element and the cause, not only the number ("LCP is the hero image, discovered late because it is a CSS background").
+- Check that the LCP element is real content. An intro or splash animation can become the LCP element and make the page look faster than users experience it. Then also report when the real content becomes visible.

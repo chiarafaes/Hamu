@@ -144,7 +144,7 @@ Rules:
 
 | Id | Check | SC | Lvl | Since | Sev | Auto | How |
 |---|---|---|---|---|---|---|---|
-| A11Y.TARGET.SIZE | Targets are at least 24 by 24 CSS px, or have enough spacing, with the exceptions in the SC. | 2.5.8 | AA | 2.2 | medium | target-size | A |
+| A11Y.TARGET.SIZE | Targets are at least 24 by 24 CSS px, or have enough spacing, with the exceptions in the SC. Use axe `target-size`, not raw element sizes: links inside a sentence are exempt, and a raw size check flags them falsely. | 2.5.8 | AA | 2.2 | medium | target-size | A |
 | A11Y.TARGET.GESTURE | Multipoint or path gestures (pinch, swipe) have a single-pointer alternative. | 2.5.1 | A | 2.1 | medium | - | M |
 | A11Y.TARGET.CANCEL | Actions fire on release (up event), not on press, or can be aborted. | 2.5.2 | A | 2.1 | low | - | H |
 | A11Y.TARGET.DRAG | Dragging has a single-pointer alternative (buttons, inputs). | 2.5.7 | AA | 2.2 | medium | - | M |

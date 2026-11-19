@@ -68,7 +68,7 @@
         "medical_purpose": { "type": "boolean" },
         "sector": {
           "type": "array",
-          "items": { "enum": ["general", "ecommerce", "finance", "banking", "insurance", "health", "transport", "energy", "telecom", "digital_infrastructure", "ict_services_b2b", "public_admin", "education", "media", "other"] }
+          "items": { "enum": ["general", "ecommerce", "finance", "banking", "insurance", "health", "transport", "energy", "telecom", "digital_infrastructure", "ict_services_b2b", "public_admin", "education", "media", "retail", "hospitality", "personal_services", "professional_services", "other"] }
         }
       }
     },
