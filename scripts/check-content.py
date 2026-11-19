@@ -4,6 +4,7 @@ Usage: python3 scripts/check-content.py
 - Every skill reference file (except checks.md and _shared) has front matter
   with `last_verified` (YYYY-MM-DD) and a non-empty `sources` list.
 - No em-dashes in Markdown, JSON or SKILL.md content.
+- hamu-accessibility checks.md covers every WCAG 2.2 level A and AA criterion.
 No third-party dependencies.
 """
 import pathlib, re, sys
@@ -43,6 +44,24 @@ for path in sorted(ROOT.rglob("*")):
     for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         if EM_DASH in line:
             fail(path, f"line {n}: em-dash, use plain punctuation")
+
+WCAG22_A_AA = """1.1.1 1.2.1 1.2.2 1.2.3 1.2.4 1.2.5 1.3.1 1.3.2 1.3.3 1.3.4 1.3.5 1.4.1
+1.4.2 1.4.3 1.4.4 1.4.5 1.4.10 1.4.11 1.4.12 1.4.13 2.1.1 2.1.2 2.1.4 2.2.1 2.2.2
+2.3.1 2.4.1 2.4.2 2.4.3 2.4.4 2.4.5 2.4.6 2.4.7 2.4.11 2.5.1 2.5.2 2.5.3 2.5.4
+2.5.7 2.5.8 3.1.1 3.1.2 3.2.1 3.2.2 3.2.3 3.2.4 3.2.6 3.3.1 3.3.2 3.3.3 3.3.4
+3.3.7 3.3.8 4.1.2 4.1.3""".split()
+
+a11y = PLUGIN / "skills/hamu-accessibility/references/checks.md"
+if a11y.exists():
+    covered = set()
+    for line in a11y.read_text(encoding="utf-8").splitlines():
+        if line.startswith("| A11Y."):
+            cols = [c.strip() for c in line.split("|")]
+            if len(cols) > 3:
+                covered.update(re.findall(r"\d\.\d+\.\d+", cols[3]))
+    missing = [sc for sc in WCAG22_A_AA if sc not in covered]
+    if missing:
+        fail(a11y, "WCAG 2.2 A/AA criteria without a check: " + ", ".join(missing))
 
 if bad:
     sys.exit(1)
