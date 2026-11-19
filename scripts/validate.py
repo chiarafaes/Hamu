@@ -11,13 +11,19 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SCHEMAS = ROOT / "plugins/hamu-audit/shared/schemas"
 ctx_v = Draft202012Validator(json.loads((SCHEMAS / "context.schema.json").read_text()), format_checker=FormatChecker())
 fnd_v = Draft202012Validator(json.loads((SCHEMAS / "finding.schema.json").read_text()), format_checker=FormatChecker())
+rol_v = Draft202012Validator(json.loads((SCHEMAS / "rollup.schema.json").read_text()), format_checker=FormatChecker())
 
 target = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "plugins/hamu-audit/shared/examples"
 files = [p for p in target.rglob("*.json") if "history" not in p.parts]
 bad = 0
 for p in files:
     data = json.loads(p.read_text())
-    v = ctx_v if "audit_id" in data and "findings" not in data else fnd_v
+    if "overall" in data:
+        v = rol_v
+    elif "audit_id" in data and "findings" not in data:
+        v = ctx_v
+    else:
+        v = fnd_v
     errs = list(v.iter_errors(data))
     if errs:
         bad += 1

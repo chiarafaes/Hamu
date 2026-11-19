@@ -301,7 +301,7 @@ def latest_history_dir(audit_dir, current_audit_id):
     return max(candidates)[1] if candidates else None
 
 
-def diff_against(previous_dir, findings, ran_skills):
+def diff_against(previous_dir, findings, ran_skills, audit_dir=None):
     """Compare open findings by id. A previous finding whose owner skill did not
     run this time is 'not_rechecked', never 'fixed'."""
     prev_open, prev_audit = {}, None
@@ -322,12 +322,22 @@ def diff_against(previous_dir, findings, ran_skills):
         (fixed if prev_open[i].get("owner_skill") in ran_skills else not_rechecked).append(row)
     return {
         "previous_audit_id": prev_audit,
-        "previous_dir": str(previous_dir),
+        "previous_dir": _relative(previous_dir, audit_dir),
         "fixed": fixed,
         "new": [{"id": i, "title": now_open[i]} for i in sorted(now_open) if i not in prev_open],
         "still_open": [{"id": i, "title": now_open[i]} for i in sorted(now_open) if i in prev_open],
         "not_rechecked": not_rechecked,
     }
+
+
+def _relative(path, base):
+    path = pathlib.Path(path).resolve()
+    if base is not None:
+        try:
+            return str(path.relative_to(pathlib.Path(base).resolve()))
+        except ValueError:
+            pass
+    return str(path)
 
 
 # ---------------------------------------------------------------- build
@@ -369,7 +379,7 @@ def build_rollup(audit_dir, previous=None, only_skills=None, now=None):
         ],
         "frameworks": framework_coverage(findings, context),
         "limitations": limitations(files),
-        "diff": diff_against(prev_dir, findings, set(files)) if prev_dir else None,
+        "diff": diff_against(prev_dir, findings, set(files), audit_dir) if prev_dir else None,
         "findings": findings,
     }
 

@@ -1,0 +1,1009 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "fixture-shop-20261119",
+  "generated_at": "2026-11-19T12:00:00+00:00",
+  "report_language": "en",
+  "target": {
+    "type": "url",
+    "name": "Fixture Shop",
+    "urls": [
+      "https://shop.example.be"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "languages": [
+      "nl",
+      "fr"
+    ]
+  },
+  "testing": {
+    "owner_confirmed": true,
+    "active_testing_allowed": false
+  },
+  "goal": "pre_launch",
+  "overall": {
+    "score": 97,
+    "verdict": "no_go",
+    "reasons": [
+      "Open high on a law that applies: A11Y.IMG.ALT#11111111",
+      "Open high on a law that applies: SP.CONSENT.PRE-TRACK#aaaaaaaa"
+    ]
+  },
+  "skills": [
+    {
+      "skill": "hamu-security-privacy",
+      "ran": true,
+      "skill_version": "0.7.0",
+      "score": 97,
+      "status": {
+        "fail": 2,
+        "warn": 1,
+        "pass": 1,
+        "needs_manual": 1,
+        "not_tested": 1,
+        "not_applicable": 0
+      },
+      "open_by_severity": {
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 0,
+        "info": 0
+      },
+      "checks_run": 5,
+      "not_tested": 1,
+      "areas": [
+        {
+          "area": "CONSENT",
+          "score": 90,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "DEPS",
+          "score": 100,
+          "status": {
+            "fail": 0,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 1,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 0,
+          "not_tested": 1
+        },
+        {
+          "area": "DNS",
+          "score": 98,
+          "status": {
+            "fail": 0,
+            "warn": 1,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "HDR",
+          "score": 96,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "LOG",
+          "score": 100,
+          "status": {
+            "fail": 0,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 1,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "TLS",
+          "score": 100,
+          "status": {
+            "fail": 0,
+            "warn": 0,
+            "pass": 1,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        }
+      ]
+    },
+    {
+      "skill": "hamu-accessibility",
+      "ran": true,
+      "skill_version": "0.7.0",
+      "score": 97,
+      "status": {
+        "fail": 2,
+        "warn": 0,
+        "pass": 1,
+        "needs_manual": 0,
+        "not_tested": 0,
+        "not_applicable": 0
+      },
+      "open_by_severity": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "checks_run": 3,
+      "not_tested": 0,
+      "areas": [
+        {
+          "area": "COLOR",
+          "score": 100,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "IMG",
+          "score": 90,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "KBD",
+          "score": 100,
+          "status": {
+            "fail": 0,
+            "warn": 0,
+            "pass": 1,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        }
+      ]
+    },
+    {
+      "skill": "hamu-performance-ux",
+      "ran": true,
+      "skill_version": "0.7.0",
+      "score": 97,
+      "status": {
+        "fail": 1,
+        "warn": 1,
+        "pass": 0,
+        "needs_manual": 0,
+        "not_tested": 0,
+        "not_applicable": 0
+      },
+      "open_by_severity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "info": 0
+      },
+      "checks_run": 2,
+      "not_tested": 0,
+      "areas": [
+        {
+          "area": "CTA",
+          "score": 98,
+          "status": {
+            "fail": 0,
+            "warn": 1,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        },
+        {
+          "area": "CWV",
+          "score": 96,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        }
+      ]
+    },
+    {
+      "skill": "hamu-seo-visibility",
+      "ran": false,
+      "skill_version": null,
+      "score": null,
+      "status": {
+        "fail": 1,
+        "warn": 0,
+        "pass": 0,
+        "needs_manual": 0,
+        "not_tested": 0,
+        "not_applicable": 0
+      },
+      "open_by_severity": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "info": 0
+      },
+      "checks_run": 1,
+      "not_tested": 0,
+      "areas": [
+        {
+          "area": "LINK",
+          "score": 96,
+          "status": {
+            "fail": 1,
+            "warn": 0,
+            "pass": 0,
+            "needs_manual": 0,
+            "not_tested": 0,
+            "not_applicable": 0
+          },
+          "open_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "checks_run": 1,
+          "not_tested": 0
+        }
+      ]
+    }
+  ],
+  "top_actions": [
+    {
+      "id": "A11Y.IMG.ALT#11111111",
+      "title": "Product images without alt text",
+      "severity": "high",
+      "effort": "S",
+      "owner_skill": "hamu-accessibility",
+      "fix": "Fix Product images without alt text"
+    },
+    {
+      "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+      "title": "Analytics fire before consent",
+      "severity": "high",
+      "effort": "S",
+      "owner_skill": "hamu-security-privacy",
+      "fix": "Fix Analytics fire before consent"
+    },
+    {
+      "id": "PX.CTA.PRIMARY#55555555",
+      "title": "Primary CTA below the fold",
+      "severity": "medium",
+      "effort": "S",
+      "owner_skill": "hamu-performance-ux",
+      "fix": "Fix Primary CTA below the fold"
+    },
+    {
+      "id": "PX.CWV.LCP#44444444",
+      "title": "LCP 3.1 s on mobile",
+      "severity": "medium",
+      "effort": "S",
+      "owner_skill": "hamu-performance-ux",
+      "fix": "Fix LCP 3.1 s on mobile"
+    },
+    {
+      "id": "SEO.LINK.REL#66666666",
+      "title": "Affiliate links without rel sponsored",
+      "severity": "medium",
+      "effort": "S",
+      "owner_skill": "hamu-seo-visibility",
+      "fix": "Fix Affiliate links without rel sponsored"
+    },
+    {
+      "id": "SP.DNS.DMARC#cccccccc",
+      "title": "DMARC policy is none",
+      "severity": "medium",
+      "effort": "S",
+      "owner_skill": "hamu-security-privacy",
+      "fix": "Fix DMARC policy is none"
+    },
+    {
+      "id": "SP.HDR.CSP#bbbbbbbb",
+      "title": "No Content-Security-Policy",
+      "severity": "medium",
+      "effort": "M",
+      "owner_skill": "hamu-security-privacy",
+      "fix": "Fix No Content-Security-Policy"
+    }
+  ],
+  "needs_confirmation": [
+    "A11Y.COLOR.CONTRAST#22222222",
+    "SP.LOG.ALERT#eeeeeeee"
+  ],
+  "cross_skill": [
+    {
+      "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+      "title": "Analytics fire before consent",
+      "reported_in": [
+        "hamu-accessibility",
+        "hamu-security-privacy"
+      ]
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "GDPR",
+      "status": "applies",
+      "reason": "Established in BE",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    },
+    {
+      "id": "EPRIVACY-BE",
+      "status": "applies",
+      "reason": "Tracking detected, BE users",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    },
+    {
+      "id": "ASVS5",
+      "status": "applies",
+      "reason": "Baseline",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    },
+    {
+      "id": "WCAG22",
+      "status": "applies",
+      "reason": "Always",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    },
+    {
+      "id": "EAA",
+      "status": "applies",
+      "reason": "B2C e-commerce in EU",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    },
+    {
+      "id": "CWV",
+      "status": "applies",
+      "reason": "Web target",
+      "findings": 1,
+      "pass": 0,
+      "fail": 1,
+      "warn": 0,
+      "needs_manual": 0,
+      "not_tested": 0
+    }
+  ],
+  "limitations": {
+    "tools_missing": [
+      "osv-scanner"
+    ],
+    "stale_references": [],
+    "skills_not_run": [
+      "hamu-seo-visibility"
+    ]
+  },
+  "diff": {
+    "previous_audit_id": "fixture-shop-20261001",
+    "previous_dir": "history/fixture-shop-20261001",
+    "fixed": [
+      {
+        "id": "SP.TLS.HSTS#77777777",
+        "title": "HSTS missing"
+      }
+    ],
+    "new": [
+      {
+        "id": "A11Y.COLOR.CONTRAST#22222222",
+        "title": "Low contrast on hero text"
+      },
+      {
+        "id": "A11Y.IMG.ALT#11111111",
+        "title": "Product images without alt text"
+      },
+      {
+        "id": "PX.CTA.PRIMARY#55555555",
+        "title": "Primary CTA below the fold"
+      },
+      {
+        "id": "PX.CWV.LCP#44444444",
+        "title": "LCP 3.1 s on mobile"
+      },
+      {
+        "id": "SEO.LINK.REL#66666666",
+        "title": "Affiliate links without rel sponsored"
+      },
+      {
+        "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+        "title": "Analytics fire before consent"
+      },
+      {
+        "id": "SP.DNS.DMARC#cccccccc",
+        "title": "DMARC policy is none"
+      }
+    ],
+    "still_open": [
+      {
+        "id": "SP.HDR.CSP#bbbbbbbb",
+        "title": "No Content-Security-Policy"
+      }
+    ],
+    "not_rechecked": [
+      {
+        "id": "SEO.CRAWL.ROBOTS#88888888",
+        "title": "robots.txt blocks CSS"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "A11Y.IMG.ALT#11111111",
+      "check_id": "A11Y.IMG.ALT",
+      "owner_skill": "hamu-accessibility",
+      "title": "Product images without alt text",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Product images without alt text.",
+      "detail_technical": "Technical detail for Product images without alt text.",
+      "frameworks": [
+        {
+          "id": "WCAG22",
+          "ref": "1.1.1",
+          "level": "A",
+          "relation": "requirement"
+        },
+        {
+          "id": "EAA",
+          "ref": "Annex I",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.IMG.ALT#11111111"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Product images without alt text",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-accessibility"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "A11Y.KBD.TRAP#33333333",
+      "check_id": "A11Y.KBD.TRAP",
+      "owner_skill": "hamu-accessibility",
+      "title": "No keyboard trap",
+      "status": "pass",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for No keyboard trap.",
+      "detail_technical": "Technical detail for No keyboard trap.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.KBD.TRAP#33333333"
+        }
+      ],
+      "fix": {
+        "summary": "Fix No keyboard trap",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-accessibility"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+      "check_id": "SP.CONSENT.PRE-TRACK",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Analytics fire before consent",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Analytics fire before consent.",
+      "detail_technical": "Technical detail for Analytics fire before consent.",
+      "frameworks": [
+        {
+          "id": "EPRIVACY-BE",
+          "ref": "Art. 10/2 Law of 30 July 2018",
+          "relation": "requirement"
+        },
+        {
+          "id": "GDPR",
+          "ref": "Art. 6",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.CONSENT.PRE-TRACK#aaaaaaaa"
+        },
+        {
+          "type": "text",
+          "location": "https://shop.example.be/products",
+          "snippet": "evidence SP.CONSENT.PRE-TRACK#aaaaaaaa"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Analytics fire before consent",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-accessibility",
+        "hamu-security-privacy"
+      ],
+      "merged_from": [
+        {
+          "skill": "hamu-accessibility",
+          "status": "fail"
+        }
+      ]
+    },
+    {
+      "id": "SP.DEPS.VULN#ffffffff",
+      "check_id": "SP.DEPS.VULN",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Dependencies not scanned",
+      "status": "not_tested",
+      "severity": "high",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Dependencies not scanned.",
+      "detail_technical": "Technical detail for Dependencies not scanned.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.DEPS.VULN#ffffffff"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Dependencies not scanned",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-security-privacy"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SP.TLS.HTTPS#dddddddd",
+      "check_id": "SP.TLS.HTTPS",
+      "owner_skill": "hamu-security-privacy",
+      "title": "HTTPS everywhere",
+      "status": "pass",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for HTTPS everywhere.",
+      "detail_technical": "Technical detail for HTTPS everywhere.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.TLS.HTTPS#dddddddd"
+        }
+      ],
+      "fix": {
+        "summary": "Fix HTTPS everywhere",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-security-privacy"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "A11Y.COLOR.CONTRAST#22222222",
+      "check_id": "A11Y.COLOR.CONTRAST",
+      "owner_skill": "hamu-accessibility",
+      "title": "Low contrast on hero text",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "low",
+      "method": "automated",
+      "summary_plain": "Plain summary for Low contrast on hero text.",
+      "detail_technical": "Technical detail for Low contrast on hero text.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence A11Y.COLOR.CONTRAST#22222222"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Low contrast on hero text",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-accessibility"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "PX.CTA.PRIMARY#55555555",
+      "check_id": "PX.CTA.PRIMARY",
+      "owner_skill": "hamu-performance-ux",
+      "title": "Primary CTA below the fold",
+      "status": "warn",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Primary CTA below the fold.",
+      "detail_technical": "Technical detail for Primary CTA below the fold.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence PX.CTA.PRIMARY#55555555"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Primary CTA below the fold",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-performance-ux"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "PX.CWV.LCP#44444444",
+      "check_id": "PX.CWV.LCP",
+      "owner_skill": "hamu-performance-ux",
+      "title": "LCP 3.1 s on mobile",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for LCP 3.1 s on mobile.",
+      "detail_technical": "Technical detail for LCP 3.1 s on mobile.",
+      "frameworks": [
+        {
+          "id": "CWV",
+          "ref": "LCP",
+          "relation": "best_practice"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence PX.CWV.LCP#44444444"
+        }
+      ],
+      "fix": {
+        "summary": "Fix LCP 3.1 s on mobile",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-performance-ux"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SP.DNS.DMARC#cccccccc",
+      "check_id": "SP.DNS.DMARC",
+      "owner_skill": "hamu-security-privacy",
+      "title": "DMARC policy is none",
+      "status": "warn",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for DMARC policy is none.",
+      "detail_technical": "Technical detail for DMARC policy is none.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.DNS.DMARC#cccccccc"
+        }
+      ],
+      "fix": {
+        "summary": "Fix DMARC policy is none",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-security-privacy"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SP.HDR.CSP#bbbbbbbb",
+      "check_id": "SP.HDR.CSP",
+      "owner_skill": "hamu-security-privacy",
+      "title": "No Content-Security-Policy",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for No Content-Security-Policy.",
+      "detail_technical": "Technical detail for No Content-Security-Policy.",
+      "frameworks": [
+        {
+          "id": "ASVS5",
+          "ref": "V3",
+          "relation": "best_practice"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.HDR.CSP#bbbbbbbb"
+        }
+      ],
+      "fix": {
+        "summary": "Fix No Content-Security-Policy",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "M"
+      },
+      "reported_in": [
+        "hamu-security-privacy"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SP.LOG.ALERT#eeeeeeee",
+      "check_id": "SP.LOG.ALERT",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Security alerts need confirmation",
+      "status": "needs_manual",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Security alerts need confirmation.",
+      "detail_technical": "Technical detail for Security alerts need confirmation.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.LOG.ALERT#eeeeeeee"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Security alerts need confirmation",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_in": [
+        "hamu-security-privacy"
+      ],
+      "merged_from": []
+    },
+    {
+      "id": "SEO.LINK.REL#66666666",
+      "check_id": "SEO.LINK.REL",
+      "owner_skill": "hamu-seo-visibility",
+      "title": "Affiliate links without rel sponsored",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Affiliate links without rel sponsored.",
+      "detail_technical": "Technical detail for Affiliate links without rel sponsored.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SEO.LINK.REL#66666666"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Affiliate links without rel sponsored",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_by": "hamu-performance-ux",
+      "reported_in": [
+        "hamu-performance-ux"
+      ],
+      "merged_from": []
+    }
+  ]
+}
