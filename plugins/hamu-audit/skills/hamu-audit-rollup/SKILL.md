@@ -41,9 +41,9 @@ The merging, scoring, verdict and diff are done by a script, not by judgement, s
 |---|---|
 | Merge | Findings with the same `id` are one issue. A pointer finding (`reported_by` set) merges into the owner's finding: evidence, frameworks, impact and related ids are combined, `reported_in` lists every skill that saw it. If the owner skill did not run, the pointer finding stays as the finding. |
 | Area score | Per domain (`SP.CONSENT`, `A11Y.FORM` ...): 100 minus critical 25, high 10, medium 4, low 1 per open `fail`, `warn` counts half, floor 0. Low-confidence findings are not scored. |
-| Skill score | Mean of its area scores. Areas with only `not_tested` findings are left out. Skills that did not run have no score. |
+| Skill score | 100 minus all deductions in that skill, floor 0. Area scores show where the points went. Skills that did not run, or ran no checks, have no score. |
 | Overall score | Mean of the skill scores of skills that ran. |
-| Verdict | No-go: any open critical, or any open high mapped as `requirement` to a framework with status `applies`. Go with conditions: other open highs. Go: neither. Low-confidence findings never block. |
+| Verdict | No-go: any open critical, or any open high mapped as `requirement` to a framework with status `applies`. Go with conditions: other open highs. Go: neither. Low-confidence findings never block. The reasons always say how many open findings need legal review. |
 | Diff | By finding id against the previous audit: fixed, new, still open. A previous finding whose owner skill did not run this time is "not rechecked", never "fixed". |
 | Top actions | Open findings (not low confidence, not info), by severity, then effort S, M, L. Max 10. |
 

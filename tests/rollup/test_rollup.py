@@ -73,9 +73,12 @@ class ScoreTests(unittest.TestCase):
         self.assertEqual(self.area("hamu-accessibility", "COLOR")["score"], 100)
         self.assertEqual(self.skills["hamu-accessibility"]["open_by_severity"]["medium"], 0)
 
-    def test_not_tested_only_area_excluded_from_skill_score(self):
+    def test_skill_score_is_100_minus_all_deductions(self):
+        # CONSENT fail high 10 + HDR fail medium 4 + DNS warn medium 2 = 16
         self.assertEqual(self.area("hamu-security-privacy", "DEPS")["checks_run"], 0)
-        self.assertEqual(self.skills["hamu-security-privacy"]["score"], 97)
+        self.assertEqual(self.skills["hamu-security-privacy"]["score"], 84)
+        self.assertEqual(self.skills["hamu-accessibility"]["score"], 90)
+        self.assertEqual(self.skills["hamu-performance-ux"]["score"], 94)
 
     def test_skill_not_run_has_no_score(self):
         seo = self.skills["hamu-seo-visibility"]
@@ -83,7 +86,7 @@ class ScoreTests(unittest.TestCase):
         self.assertIsNone(seo["score"])
 
     def test_overall_is_mean_of_skills_that_ran(self):
-        self.assertEqual(self.r["overall"]["score"], 97)
+        self.assertEqual(self.r["overall"]["score"], 89)
 
     def test_floor_at_zero(self):
         findings = [{"check_id": "SP.X.Y", "status": "fail", "severity": "critical", "confidence": "high"}] * 5
@@ -104,6 +107,13 @@ class VerdictTests(unittest.TestCase):
         findings = [{"id": "SP.A.B#00000000", "status": "fail", "severity": "high", "confidence": "high",
                      "frameworks": [{"id": "ASVS5", "relation": "best_practice"}]}]
         self.assertEqual(rollup.verdict(findings, ctx)["verdict"], "go_with_conditions")
+
+    def test_legal_review_mentioned_in_reasons(self):
+        findings = [{"id": "SP.A.B#00000000", "status": "warn", "severity": "medium", "confidence": "medium",
+                     "legal_review": True, "frameworks": []}]
+        v = rollup.verdict(findings, {})
+        self.assertEqual(v["verdict"], "go")
+        self.assertTrue(any("legal review" in r for r in v["reasons"]))
 
     def test_low_confidence_critical_does_not_block(self):
         findings = [{"id": "SP.A.B#00000000", "status": "fail", "severity": "critical", "confidence": "low", "frameworks": []}]
