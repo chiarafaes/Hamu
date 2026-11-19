@@ -49,7 +49,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [x] Phase 3: hamu-performance-ux (0.5.0)
 - [x] Phase 4: hamu-seo-visibility (0.6.0)
 - [x] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers) (0.7.0)
-- [ ] Phase 6: test on 2-3 real targets (URL and codebase, Claude Code and Claude app)
+- [x] Phase 6: test on real targets in Claude Code (0.8.0). Claude app run pending, see `testing/claude-app-test.md`.
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
 
 Open items (checked 2026-11-19, phase 6):
