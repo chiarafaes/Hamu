@@ -5,6 +5,7 @@ Usage: python3 scripts/check-content.py
   with `last_verified` (YYYY-MM-DD) and a non-empty `sources` list.
 - No em-dashes in Markdown, JSON or SKILL.md content.
 - hamu-accessibility checks.md covers every WCAG 2.2 level A and AA criterion.
+- every rubric (R) check in hamu-performance-ux has rubric examples.
 No third-party dependencies.
 """
 import pathlib, re, sys
@@ -62,6 +63,22 @@ if a11y.exists():
     missing = [sc for sc in WCAG22_A_AA if sc not in covered]
     if missing:
         fail(a11y, "WCAG 2.2 A/AA criteria without a check: " + ", ".join(missing))
+
+px_dir = PLUGIN / "skills/hamu-performance-ux/references"
+px = px_dir / "checks.md"
+if px.exists():
+    rubric_text = "".join(
+        (px_dir / n).read_text(encoding="utf-8")
+        for n in ("ux-heuristics.md", "conversion.md", "store-listing.md")
+        if (px_dir / n).exists()
+    )
+    for line in px.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("| PX."):
+            continue
+        cols = [c.strip() for c in line.split("|")]
+        check_id, how = cols[1], cols[5] if len(cols) > 5 else ""
+        if "R" in how.split() and not check_id.startswith("PX.CRO.") and f"| {check_id} |" not in rubric_text:
+            fail(px, f"{check_id} is a rubric check without rubric examples")
 
 if bad:
     sys.exit(1)
