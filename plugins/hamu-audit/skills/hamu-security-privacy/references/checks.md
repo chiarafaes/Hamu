@@ -24,6 +24,7 @@ Rules for every check:
 - Passive checks never submit forms, log in, or send crafted input.
 - Evidence is redacted per `run-protocol.md`: first 4 characters of a secret, no session ids, no personal data.
 - One finding per check per location. Same issue on 30 pages: one finding, locations listed in `evidence`.
+- Non-EU privacy laws (CCPA, COPPA, PIPEDA, LGPD, POPIA) and the app store rules reuse the PRIVACY, CONSENT, TRANSFER and MOBILE checks. Their reference files list which check maps to which section. Add those frameworks to the finding when their status is `applies` or `likely`.
 
 ---
 
@@ -73,6 +74,7 @@ Rules for every check:
 | SP.CONSENT.WALL | No cookie wall that blocks access unless the user accepts tracking, without a real alternative. | EPRIVACY-BE R, GDPR R (Art. 7(4)) | high | P | Reject and check access. `legal_review: true` for "pay or consent" models. |
 | SP.CONSENT.MODE | Google Consent Mode or equivalent sends no identifiers before consent. Cookieless pings are noted, not failed. | EPRIVACY-BE R, GDPR R | medium | P | Inspect `gcs`/`gcd` parameters in collect requests. |
 | SP.CONSENT.RECORD | Consent is logged (who, when, what version) so it can be proven. | GDPR R (Art. 7(1)) | medium | C / M | CC: look for consent log in code or CMP config. Else `needs_manual`. |
+| SP.CONSENT.GPC | Opt-out preference signals (Global Privacy Control, `Sec-GPC: 1`) are honoured as an opt-out of sale and sharing, and the site shows that the signal was processed. | CCPA R (regs 7025) | high | P | CC: Playwright with `Sec-GPC: 1` header and `navigator.globalPrivacyControl = true`, compare ad and analytics requests with a run without it. APP: browser with GPC enabled if available. FB: `not_tested`. |
 
 ## PRIVACY: policy, rights, data handling
 
@@ -92,6 +94,10 @@ Rules for every check:
 | SP.PRIVACY.BREACH | A breach procedure exists that meets the 72-hour notification to the GBA/APD. | GDPR R (Art. 33, 34), NIS2-BE E | medium | M | `needs_manual`. |
 | SP.PRIVACY.PII-URL | No personal data (email, name, national number) in URLs, query strings or analytics events. | GDPR R (Art. 5(1)(f), 32) | high | P / C | Network log, analytics payloads, code. |
 | SP.PRIVACY.RRN | Belgian national register number (rijksregisternummer) is not collected unless a legal basis allows it. | GDPR R (Art. 87), BE law (see `gdpr.md`) | high | P / C | Form fields matching `\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}`. `legal_review: true`. |
+| SP.PRIVACY.US-NOTICE | US notices: CCPA notice at collection and privacy policy with categories, purposes, retention, rights and a "last updated" date within 12 months. COPPA online notice when children under 13 are in scope. | CCPA R, COPPA R | medium | P | Read the policy and the collection points. |
+| SP.PRIVACY.US-OPTOUT | "Do Not Sell or Share My Personal Information" link (and "Limit the Use of My Sensitive Personal Information" where needed, or one combined alternative opt-out link) in the footer, and it works without creating an account. | CCPA R (1798.135) | high | P | Footer and the opt-out flow. Count as fail only when ad or cross-context tracking is detected. |
+| SP.PRIVACY.COPPA | Services for children under 13: neutral age screen, verifiable parental consent before collection, separate consent before third-party disclosure or targeted ads. | COPPA R (16 CFR 312) | high | P | Signup flow inspection without creating real accounts. `legal_review: true`. |
+| SP.PRIVACY.LOCAL-OFFICER | The local accountable person is named with contact: privacy officer (PIPEDA), encarregado (LGPD), information officer (POPIA). | PIPEDA R, LGPD R (Art. 41), POPIA R (s55) | medium | P | Privacy notice and footer. |
 
 ## TRANSFER: international transfers
 
@@ -214,6 +220,8 @@ Rules for every check:
 | SP.MOBILE.LABELS | App Store privacy labels and Play data safety form match what the code collects (SDKs included). | APPLE-ASRG R, GOOGLE-PLAY R, GDPR E | medium | C / M | Compare SDK list with declared labels. |
 | SP.MOBILE.SDK | Third-party SDKs (analytics, ads) do not start before consent. | EPRIVACY-BE R, GDPR R, MASVS B | high | C | Init calls in app startup. |
 | SP.MOBILE.DELETE | Users who can create an account in the app can delete it from the app. | APPLE-ASRG R, GOOGLE-PLAY R, GDPR R (Art. 17) | medium | C / P | Account screens, store listing. |
+| SP.MOBILE.ATT | iOS: App Tracking Transparency prompt appears before any cross-app tracking, and tracking SDKs respect a refusal. | APPLE-ASRG R (5.1.2(i)), EPRIVACY-BE E | high | C | `NSUserTrackingUsageDescription`, `ATTrackingManager` calls before SDK init. |
+| SP.MOBILE.MANIFEST | iOS: `PrivacyInfo.xcprivacy` exists, declares collected data and tracking domains, and gives reasons for required reason APIs used by the app and its SDKs. | APPLE-ASRG R | high | C | Read the manifest, compare with SDK list. |
 
 ## INFRA
 
@@ -274,12 +282,43 @@ These findings never say "compliant" or "certified". They map existing findings 
 
 | Id | Check | Frameworks | Sev | Mode | How to test |
 |---|---|---|---|---|---|
-| SP.CERT.ISO27001 | Readiness summary per Annex A theme (organisational, people, physical, technological). | ISO27001 E | info | M | Built from other findings plus a manual checklist. Phase 1b. |
-| SP.CERT.SOC2 | Readiness summary per Trust Services category in scope. | SOC2 E | info | M | Phase 1b. |
-| SP.CERT.ISO42001 | Readiness summary for an AI management system. | ISO42001 E | info | M | Phase 1b. |
-| SP.CERT.HIPAA | Readiness summary for HIPAA Security Rule safeguards. | HIPAA E | info | M | Phase 1b. |
-| SP.CERT.PCI | SAQ type estimate and readiness for the matching requirements. | PCI-DSS E | info | M | Uses `pci-dss.md`. |
-| SP.CERT.CYFUN | Readiness for the CyberFundamentals level that matches the NIS2 classification. | NIS2-BE E | info | M | Uses `nis2-be.md`. |
+| SP.CERT.ISO27001 | Readiness view per Annex A theme plus the management system checklist. | ISO27001 E | info | M | `iso27001.md`. |
+| SP.CERT.SOC2 | Readiness view per Trust Services category in scope plus the manual checklist. | SOC2 E | info | M | `soc2.md`. |
+| SP.CERT.ISO42001 | Readiness view per Annex A area for the AI management system. | ISO42001 E | info | M | `iso42001.md`. |
+| SP.CERT.NIST-CSF | Readiness view per CSF 2.0 function. | NIST-CSF E | info | M | `nist-csf.md`. |
+| SP.CERT.HIPAA | Readiness view for the Security Rule safeguards. | HIPAA E | info | M | `hipaa.md`. |
+| SP.CERT.PCI | SAQ type estimate and readiness for the matching requirements. | PCI-DSS E | info | M | `pci-dss.md`. |
+| SP.CERT.CYFUN | Readiness for the CyberFundamentals level that matches the NIS2 classification. | NIS2-BE E | info | M | `nis2-be.md`. |
+| SP.CERT.CCPA-PROC | CCPA process duties: risk assessments (from 2026), ADMT (from 2027), cybersecurity audit certification (2028 to 2030 by revenue). | CCPA R | info | M | `ccpa.md`. Only when CCPA applies. |
+
+How a readiness view is built:
+1. Take every finding of this run, and add the control ids from the mapping below as `evidence_for`.
+2. Add one `needs_manual` finding per checklist item in the reference file that the owner has not confirmed.
+3. In the report section "Framework coverage", show per theme or function: checks with evidence, gaps, manual items. Never a percentage "toward certification".
+
+### Readiness mapping
+
+Ids are written to `frameworks[].ref` with relation `evidence_for`. Copy only ids, never control text.
+
+| Hamu domain | ISO27001 | SOC2 | NIST-CSF | HIPAA | ISO42001 |
+|---|---|---|---|---|---|
+| TLS | A.8.20, A.8.24 | CC6 | PR.DS | 164.312(e) | - |
+| HDR, COOKIE | A.8.9, A.8.26 | CC6 | PR.PS | 164.312(c) | - |
+| CONSENT, PRIVACY | A.5.34 | P1 to P8 | GV.OC | Privacy Rule | A.8 |
+| TRANSFER | A.5.14 | C1, P6 | GV.SC | 164.314 | A.10 |
+| LEGAL, CONSUMER | A.5.31 | CC2 | GV.OC | - | - |
+| AUTH | A.5.17, A.8.5 | CC6 | PR.AA | 164.312(a), (d) | - |
+| ACCESS | A.5.15, A.5.18, A.8.2, A.8.3 | CC6 | PR.AA | 164.308(a)(4), 164.312(a) | - |
+| INPUT, API | A.8.26, A.8.28 | CC8 | PR.PS | 164.312(c) | - |
+| DEPS | A.8.8, A.8.25 | CC7 | ID.AM, PR.PS | 164.308(a)(1) | A.4 |
+| SECRETS | A.8.12, A.5.17 | CC6 | PR.DS | 164.312(a) | - |
+| LLM, AI | A.8.26 | CC3 | ID.RA | - | A.5, A.6, A.7, A.9 |
+| MOBILE | A.8.26 | CC6 | PR.PS | 164.312 | - |
+| INFRA | A.5.23, A.8.9, A.8.24 | CC6, CC7 | PR.PS, PR.IR | 164.310, 164.312(a) | - |
+| DNS | A.8.20 | CC6 | PR.PS | - | - |
+| DISCLOSE | A.8.8 | CC2 | ID.IM | - | A.8 |
+| LOG | A.8.15, A.8.16 | CC4, CC7 | DE.CM, DE.AE | 164.312(b) | A.6 |
+| RESIL | A.5.24 to A.5.30, A.8.13, A.5.19 to A.5.22 | CC7, CC9, A1 | RS, RC, GV.SC | 164.308(a)(6), (a)(7) | A.10 |
 
 ---
 

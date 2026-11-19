@@ -7,7 +7,7 @@ description: Audit a website, web app, API or mobile app for security and privac
 
 Security and privacy readiness checks with EU and Belgian depth. Owns every check with prefix `SP.`.
 
-> Status: 0.2.0 (phase 1a). EU, Belgian and technical baseline checks are ready. Readiness views for ISO 27001, SOC 2, ISO 42001, HIPAA and the global privacy laws (CCPA, COPPA, PIPEDA, LGPD, POPIA, app stores) follow in phase 1b. Until then those frameworks are reported as `not_tested`.
+> Status: 0.3.0 (phase 1). EU and Belgian law, technical baseline, global privacy laws, app store rules and certification readiness views are in place. Not yet tested on real targets (phase 6).
 
 This is a readiness check, not legal advice or a certification. Never write "compliant" or "certified".
 
@@ -46,6 +46,17 @@ Read a framework reference file only when that framework has status `applies` or
 | OWASP-T10 | `references/owasp-t10.md` |
 | MASVS | `references/masvs.md` |
 | CIS | `references/cis.md` |
+| CCPA | `references/ccpa.md` |
+| COPPA | `references/coppa.md` |
+| PIPEDA | `references/pipeda.md` |
+| LGPD | `references/lgpd.md` |
+| POPIA | `references/popia.md` |
+| APPLE-ASRG, GOOGLE-PLAY | `references/app-stores.md` |
+| ISO27001 (readiness) | `references/iso27001.md` |
+| SOC2 (readiness) | `references/soc2.md` |
+| ISO42001 (readiness) | `references/iso42001.md` |
+| NIST-CSF (readiness) | `references/nist-csf.md` |
+| HIPAA | `references/hipaa.md` |
 
 ## Pick the mode
 
@@ -74,7 +85,8 @@ Read a framework reference file only when that framework has status `applies` or
    - Validate with `python3 scripts/validate.py .audit` when this repo's script and `jsonschema` are available, or with `ajv`. Fix and rewrite on errors.
 8. **Write the report** `.audit/reports/hamu-security-privacy.md` per `report-template.md`: executive layer first, then technical layer. Add the OWASP attribution lines from `asvs5.md` and `owasp-t10.md` when OWASP ids are cited.
 9. **Update** `context.json` `runs[]`.
-10. **Tell the user**: score, verdict if pre-launch, top 3 actions, report path. Suggest the other Hamu skills once, in one line.
+10. **Readiness views.** Only for targets in `certification_targets`: follow "How a readiness view is built" in `checks.md` and the manual checklist in the matching reference file. Never write a percentage toward certification.
+11. **Tell the user**: score, verdict if pre-launch, top 3 actions, report path. Suggest the other Hamu skills once, in one line.
 
 ### Severity reminders
 

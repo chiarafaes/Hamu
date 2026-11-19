@@ -51,7 +51,9 @@ Rules of thumb:
 | HIPAA | US HIPAA Security and Privacy Rules | SP |
 | CCPA | California CCPA / CPRA | SP |
 | COPPA | US Children's Online Privacy Protection Act | SP |
-| PIPEDA / LGPD / POPIA | Canada / Brazil / South Africa privacy laws | SP |
+| PIPEDA | Canada federal private sector privacy law | SP |
+| LGPD | Brazil General Data Protection Law | SP |
+| POPIA | South Africa Protection of Personal Information Act | SP |
 | APPLE-ASRG | Apple App Store Review Guidelines | SP, PX |
 | GOOGLE-PLAY | Google Play Developer Program Policies | SP, PX |
 | CWV | Core Web Vitals (LCP, INP, CLS) | PX |
@@ -76,7 +78,9 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 | DSA | intermediary is not none | user-generated content or third-party listings detected | intermediary none |
 | CCPA | users_in has US-CA or US AND the organisation meets one CCPA threshold: annual gross revenue above USD 26,625,000 (CPI-adjusted value for 2025-2026, next adjustment 1 Jan 2027), OR buys, sells or shares personal information of 100,000 or more California consumers or households, OR earns 50% or more of revenue from selling or sharing personal information | US users and size unknown | no US users |
 | COPPA | users_in has US AND (children_targeted OR actual knowledge of under-13 users) | - | otherwise |
-| PIPEDA / LGPD / POPIA | users_in has CA / BR / ZA | GLOBAL | otherwise |
+| PIPEDA | users_in has CA (note Quebec Law 25 when users are in Quebec) | GLOBAL | otherwise |
+| LGPD | users_in has BR | GLOBAL | otherwise |
+| POPIA | established_in has ZA or processing uses means in ZA; users_in has ZA | GLOBAL | otherwise |
 
 ### Security, resilience and product
 
@@ -96,7 +100,7 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 | AIACT | ai is high_risk_use | ai in hiring, credit, education scoring, biometric or similar | ai none or low-risk |
 | MDR | medical_purpose true | health vocabulary with diagnostic/therapeutic claims | otherwise |
 | HIPAA | users_in has US AND data_categories has health AND organisation is a covered entity or business associate | US health data, role unclear | otherwise |
-| ISO27001, SOC2, ISO42001, NIST-CSF, CyFun-BE | user named it in certification_targets (status readiness_only) | - | otherwise: findings still carry ids as evidence_for, no separate section |
+| ISO27001, SOC2, ISO42001, NIST-CSF, CyFun (via NIS2-BE) | user named it in certification_targets (status readiness_only) | - | otherwise: findings still carry ids as evidence_for, no separate section |
 | APPLE-ASRG / GOOGLE-PLAY | platforms has ios / android | - | otherwise |
 
 ### Accessibility
