@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0 (2026-11-19) Phase 2: hamu-accessibility
+
+- `references/checks.md`: 81 `A11Y.` checks over 15 domains. Every WCAG 2.2 level A and AA criterion (55) has a check, with level, WCAG version, default severity, axe-core rule ids and test method. AAA as advisory. Framework mapping rule per law version (EN 301 549 v3.2.1 / v4.1.1, ADA, Section 508). Guardrails pointers per build task.
+- References: WCAG 2.2, EN 301 549 (v4.1.1 published September 2026, v3.2.1 still the harmonised version), EAA (Belgian micro-enterprise rule unresolved, treated as likely), WAD (Belgian federal law and BOSA), ADA (Title II dates extended to 2027 and 2028), Section 508.
+- `statement.md`: what WAD and EAA ask of an accessibility statement, and a draft template.
+- `manual-test-script.md`: page sample and scripts for keyboard, screen reader, zoom and reflow, colour, media, motion, forms.
+- `SKILL.md`: audit steps and guardrails mode.
+- CI: `scripts/check-content.py` fails when a WCAG 2.2 A/AA criterion has no check.
+- Shared: A11Y rows of `applicability-matrix.md` verified and extended. No schema change.
+
 ## 0.3.0 (2026-11-19) Phase 1b: hamu-security-privacy readiness and global privacy
 
 - Readiness references (ids and own words only): ISO/IEC 27001:2022, SOC 2 Trust Services Criteria, ISO/IEC 42001:2023, NIST CSF 2.0, HIPAA (current Security Rule, proposed update noted as projected July 2027). Each has a manual checklist for process controls.
