@@ -23,7 +23,7 @@
   },
   "goal": "pre_launch",
   "overall": {
-    "score": 97,
+    "score": 89,
     "verdict": "no_go",
     "reasons": [
       "Open high on a law that applies: A11Y.IMG.ALT#11111111",
@@ -35,7 +35,7 @@
       "skill": "hamu-security-privacy",
       "ran": true,
       "skill_version": "0.7.0",
-      "score": 97,
+      "score": 84,
       "status": {
         "fail": 2,
         "warn": 1,
@@ -186,7 +186,7 @@
       "skill": "hamu-accessibility",
       "ran": true,
       "skill_version": "0.7.0",
-      "score": 97,
+      "score": 90,
       "status": {
         "fail": 2,
         "warn": 0,
@@ -274,7 +274,7 @@
       "skill": "hamu-performance-ux",
       "ran": true,
       "skill_version": "0.7.0",
-      "score": 97,
+      "score": 94,
       "status": {
         "fail": 1,
         "warn": 1,

@@ -32,7 +32,7 @@ Rules for every check:
 
 | Id | Check | Frameworks | Sev | Mode | How to test |
 |---|---|---|---|---|---|
-| SP.TLS.HTTPS | Every page and asset loads over HTTPS. HTTP redirects to HTTPS with 301/308. | GDPR R (Art. 32), ASVS5 B, OWASP-T10 B (A04), PCI-DSS R (4.2.1), ISO27001 E, SOC2 E | high | P | CC: `curl -sI http://<host>/`. APP: load `http://` URL, check final URL. |
+| SP.TLS.HTTPS | Every page and asset loads over HTTPS. HTTP redirects to HTTPS with 301/308. Severity: `high` when forms, logins or personal data can be used over HTTP; `medium` when HTTPS works and only the redirect is missing (HSTS does not help on a first HTTP visit). | GDPR R (Art. 32), ASVS5 B, OWASP-T10 B (A04), PCI-DSS R (4.2.1), ISO27001 E, SOC2 E | high | P | CC: `curl -sI http://<host>/`. APP: load `http://` URL, check final URL. |
 | SP.TLS.VERSION | Only TLS 1.2 and 1.3 offered. No SSLv3, TLS 1.0, 1.1. | ASVS5 B, PCI-DSS R, NIS2-BE E | medium | P | CC: `openssl s_client -connect host:443 -tls1_1` must fail, or `testssl.sh`. APP: SSL Labs page in browser. FB: `not_tested`. |
 | SP.TLS.CERT | Certificate valid, matches host, chain complete, not expiring within 14 days. | ASVS5 B | high | P | CC: `openssl s_client -servername`. APP: browser security info. |
 | SP.TLS.MIXED | No mixed content (HTTP scripts, iframes, images, form actions on HTTPS pages). | ASVS5 B, OWASP-T10 B | medium | P | CC/APP: scan HTML and network log for `http://` subresources. |
@@ -66,7 +66,7 @@ Rules for every check:
 |---|---|---|---|---|---|
 | SP.CONSENT.PRE-TRACK | No non-essential cookies, local storage, pixels or analytics requests before consent. | EPRIVACY-BE R, GDPR R (Art. 6, 7) | high | P | Clean profile, first load, no interaction. CC: Playwright, record requests and storage. APP: browser network log. FB: ask for a HAR file. |
 | SP.CONSENT.BANNER | A consent mechanism exists when non-essential storage or tracking is present. | EPRIVACY-BE R, GDPR R | critical | P | Visual and DOM check. Critical only when ad pixels fire without any mechanism. |
-| SP.CONSENT.REJECT | Refusing is as easy as accepting: a reject option on the first layer with equal prominence. | EPRIVACY-BE R, GDPR R (Art. 7), EU-CONSUMER E (UCPD) | high | P | Screenshot of first layer. Compare button style, size, colour, position. |
+| SP.CONSENT.REJECT | Refusing is as easy as accepting: a reject option on the first layer with equal prominence. Measure size, colour, fill and position after any intro or splash screen has ended. Same size but only accept filled is `warn` with `legal_review`, not `fail`. | EPRIVACY-BE R, GDPR R (Art. 7), EU-CONSUMER E (UCPD) | high | P | Screenshot of first layer. Compare button style, size, colour, position. |
 | SP.CONSENT.GRANULAR | Consent per purpose. No pre-ticked boxes. No bundling with terms acceptance. | EPRIVACY-BE R, GDPR R (Art. 4(11), 7) | high | P | Inspect second layer. |
 | SP.CONSENT.POST-REJECT | After "reject", no non-essential requests or storage. | EPRIVACY-BE R, GDPR R | high | P | Click reject in a clean profile, reload, record requests. Clicking the banner is normal browsing, so passive. |
 | SP.CONSENT.WITHDRAW | Consent can be withdrawn as easily as given, from every page (link or floating button). | GDPR R (Art. 7(3)), EPRIVACY-BE R | medium | P | Look for a persistent settings link. |
@@ -81,7 +81,7 @@ Rules for every check:
 | Id | Check | Frameworks | Sev | Mode | How to test |
 |---|---|---|---|---|---|
 | SP.PRIVACY.POLICY | A privacy notice exists and is linked from every page footer and every form that collects data. | GDPR R (Art. 12, 13) | high | P | Crawl footer and forms. |
-| SP.PRIVACY.CONTENT | Notice names controller and contact, DPO if any, purposes with legal basis, recipients, transfers, retention, rights, right to complain (GBA/APD for BE), source of data if not from the person. | GDPR R (Art. 13, 14) | medium | P | Read notice against the checklist in `gdpr.md`. `heuristic`, confidence medium. |
+| SP.PRIVACY.CONTENT | Notice names controller and contact, DPO if any, purposes with legal basis, recipients, transfers, retention, rights, right to complain (GBA/APD for BE), source of data if not from the person. | GDPR R (Art. 13, 14) | medium | P | Read the full notice against the checklist in `gdpr.md`. Do not keyword-match: notices use many wordings (in phase 6 a keyword check missed rights written as "inkijken" and "verzetten"). `heuristic`, confidence medium. |
 | SP.PRIVACY.LANG | Notice is in the language(s) of the site and readable (short sentences, layered). | GDPR R (Art. 12(1)) | low | P | Compare `<html lang>` and notice language. |
 | SP.PRIVACY.FORMS | Forms collect only what the stated purpose needs. Optional fields are marked. Marketing opt-in is a separate unticked checkbox. | GDPR R (Art. 5(1)(c), 25), EPRIVACY-BE R (direct marketing) | medium | P | Inspect forms without submitting. |
 | SP.PRIVACY.RIGHTS | A way to exercise rights (access, erasure, objection) is described and reachable. In code: export and delete functions exist for user accounts. | GDPR R (Art. 15-22) | medium | P / C | P: notice. C: search for delete-account and export handlers. |
@@ -111,7 +111,7 @@ Rules for every check:
 
 | Id | Check | Frameworks | Sev | Mode | How to test |
 |---|---|---|---|---|---|
-| SP.LEGAL.IDENTITY | Company name, legal form, registered address, enterprise number (KBO/BCE), RPR/RPM court, email and phone are on the site. | BE-CEL R (Book XII, Book III), DSA R (Art. 11-12 for intermediaries), EU-CONSUMER R | high | P | Footer, imprint, terms. Validate the enterprise number format and checksum. |
+| SP.LEGAL.IDENTITY | Name, address, enterprise number (KBO/BCE), email and phone are on the site. Legal persons also show legal form and RPR/RPM with the court. A sole trader (natural person) shows the own name and the trade name, not a legal form or RPR. | BE-CEL R (Book XII, Book III), DSA R (Art. 11-12 for intermediaries), EU-CONSUMER R | high | P | Footer, imprint, terms. Validate the enterprise number format and checksum. |
 | SP.LEGAL.VAT | VAT number shown where the business is VAT registered. | BE-CEL R | low | P | Same. |
 | SP.LEGAL.REGULATED | Regulated professions show their professional body, title and rules. | BE-CEL R | medium | P | Sector keywords. `heuristic`. |
 | SP.LEGAL.TERMS | Terms of sale or use exist, can be stored and printed, and are accepted before the order. | BE-CEL R, EU-CONSUMER R | medium | P | Checkout inspection without placing an order. |
@@ -124,7 +124,7 @@ Rules for every check:
 |---|---|---|---|---|---|
 | SP.CONSUMER.PRE-INFO | Before ordering: main features, total price incl. VAT and delivery, payment and delivery terms, withdrawal right, guarantee. | EU-CONSUMER R (CRD Art. 6), BE-CEL R (Book VI) | high | P | Product page and cart. Do not place orders. |
 | SP.CONSUMER.BUTTON | The final order button says clearly that ordering means paying ("Order with obligation to pay" or equal). | EU-CONSUMER R (CRD Art. 8(2)) | high | P | Inspect last checkout step if reachable without payment. Else `needs_manual`. |
-| SP.CONSUMER.WITHDRAWAL | 14-day withdrawal right explained, model form available, exceptions named. | EU-CONSUMER R (CRD Art. 9-16), BE-CEL R | high | P | Terms and checkout. |
+| SP.CONSUMER.WITHDRAWAL | 14-day withdrawal right explained, model form available, exceptions named. For services booked online without payment and with free cancellation, missing information is `warn`, not `fail`, with `legal_review`. | EU-CONSUMER R (CRD Art. 9-16), BE-CEL R | high | P | Terms and checkout. |
 | SP.CONSUMER.WITHDRAW-FN | Online withdrawal function: a clearly labelled, always available function to withdraw, with a confirmation step. | EU-CONSUMER R (CRD Art. 11a, from 19 June 2026), BE-CEL R (verify article) | high | P | Account area and footer. `legal_review: true` until BE article numbers are verified. |
 | SP.CONSUMER.PRICE | Price reductions show the lowest price of the prior 30 days. | EU-CONSUMER R (Price Indication Directive Art. 6a) | medium | P | Sale labels on product and category pages. |
 | SP.CONSUMER.REVIEWS | If reviews are shown: the site says whether and how it checks that reviews come from real buyers. | EU-CONSUMER R (UCPD Art. 7(6), Annex I 23b-23c) | medium | P | Review widgets and notices. |

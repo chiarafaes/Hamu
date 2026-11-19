@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0 (2026-11-19) Phase 6: real-target test
+
+- Tested all four skills and the roll-up on a real website (passive) and the security code checks on this repository, in Claude Code. Results and lessons in `testing/phase-6-results.md`, Claude app test steps in `testing/claude-app-test.md`.
+- Roll-up: skill score is now 100 minus all deductions in the skill (the mean of area scores hid real issues). Verdict reasons state how many open findings need legal review. Tests updated (29).
+- `validate.py`: skips `evidence/` and `history/` inside an audit folder.
+- Checks and references: sole trader identity rules, HTTPS severity split, consent banner measured after intro screens, axe `target-size` instead of raw sizes, LCP element check for splash screens, Playwright lab fallback when PageSpeed Insights is unavailable, HTML parser required for crawls, privacy notices read in full, withdrawal check calibrated for free cancellation.
+- Verification: AI Omnibus confirmed as Regulation (EU) 2026/1744; Belgian EAA micro-enterprise exemption until 28 June 2030; unconfirmed "Law of 19 July 2026" on the withdrawal button removed from references; cookie lifetime handled as warn with legal review.
+- Schema: `product.sector` gains retail, hospitality, personal_services, professional_services. Non-breaking, `schema_version` stays 1.0.
+- CI: actions pinned by commit SHA.
+
 ## 0.7.0 (2026-11-19) Phase 5: hamu-audit-rollup
 
 - `scripts/rollup.py` (standard library, Python 3.9+): loads context and findings, refuses mixed audit ids, merges pointer findings into the owner's finding, scores per area and skill per `severity.md`, decides go / go with conditions / no-go, compares with the previous audit in `.audit/history/` (fixed, new, still open, not rechecked), lists top actions, items needing confirmation, framework coverage and limitations.

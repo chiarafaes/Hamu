@@ -41,6 +41,10 @@ Hamu defaults. Override with the owner's own budget when they have one.
 
 Above budget is `warn`. More than 1.5 times the budget is `fail` for PX.LOAD.JS-WEIGHT and PX.LOAD.CSS-WEIGHT.
 
+## Intro and splash screens
+
+Some sites show an intro animation before the content. Take first-view screenshots and measure the cookie banner after skipping the intro, and once with `prefers-reduced-motion: reduce`. Record how long the intro blocks the content (PX.HIER.POPUPS).
+
 ## Responsive screenshots
 
 Widths 375, 768 and 1280 px, height 812 for mobile first view and full-page for layout review. In Claude Code use Playwright. In the Claude app use the browser resize tool. Store in `.audit/evidence/hamu-performance-ux/`.
@@ -49,6 +53,6 @@ Widths 375, 768 and 1280 px, height 812 for mobile first view and full-page for 
 
 | Missing | Effect |
 |---|---|
-| No CrUX access and no PSI | CWV checks from lab only, confidence medium, INP `not_tested` |
+| No CrUX access and no PSI (the anonymous PSI API quota is often exhausted) | Lab run with Playwright: CDP throttling (4x CPU, about 1.6 Mbps, 150 ms RTT), PerformanceObserver for LCP and CLS, 3 runs median. Confidence medium, INP `not_tested`. |
 | No Lighthouse and no PSI | All CWV and LOAD lab checks `not_tested`. Header checks (compression, cache, protocol) still run with `curl` or the browser |
 | No browser automation | RESP, HIER, CTA rubric checks from static HTML and screenshots the user provides, confidence low |

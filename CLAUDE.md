@@ -49,14 +49,15 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [x] Phase 3: hamu-performance-ux (0.5.0)
 - [x] Phase 4: hamu-seo-visibility (0.6.0)
 - [x] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers) (0.7.0)
-- [ ] Phase 6: test on 2-3 real targets (URL and codebase, Claude Code and Claude app)
+- [x] Phase 6: test on real targets in Claude Code (0.8.0). Claude app run pending, see `testing/claude-app-test.md`.
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
 
-Open items:
-- `verify` markers in the hamu-security-privacy references (Belgian article numbers for the withdrawal function and Book XII, AI Omnibus OJ number, CyFun milestones, GBA/APD cookie lifetime). Check against the Belgian Official Gazette, EUR-Lex and CCB before phase 6. Phase 1b adds: LGPD incident deadline wording (business days), HHS tracking guidance status, app store guideline numbers (re-check each run).
-- EAA micro-enterprise treatment in Belgium: sources still conflict (exemption, transition to 2030, or 2035). Treated as `likely` with `legal_review`. Check the Belgian Official Gazette and FPS Economy before phase 6. Also verify the Belgian EAA transposition law title and the regional WAD decree dates.
+Open items (checked 2026-11-19, phase 6):
+- Belgian transposition of the online withdrawal function (Chamber doc. 56K1532): not published yet per secondary sources. Re-check the Belgian Official Gazette before citing a Belgian article.
+- GBA/APD maximum cookie and consent lifetime: no fixed number found. Treated as warn plus legal review.
+- CyFun milestones 2026 to 2028 and Book XII article numbers: still verify.
 - EN 301 549 v4.1.1: watch for its Official Journal citation, then update `en301549.md`.
-- AI crawler user agents and robots.txt behaviour change often: re-check `ai-search.md` against vendor pages before phase 6.
+- AI crawler user agents and robots.txt behaviour change often: re-check `ai-search.md` against vendor pages before each release.
 
 ## Working agreements
 

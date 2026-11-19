@@ -1,6 +1,6 @@
 {
   "name": "hamu-audit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Hamu audit suite: security & privacy, accessibility, performance & UX, SEO & AI visibility, plus a roll-up that merges them into one layered report.",
   "author": {
     "name": "Hamu"

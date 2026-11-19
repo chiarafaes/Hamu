@@ -36,7 +36,7 @@ Applies to B2C online sales to consumers in the EU. Belgian transposition sits i
 3. A confirmation step ("confirm withdrawal").
 4. An acknowledgement sent on a durable medium with date and time.
 
-Belgian transposition: reported as adopted by the Law of 19 July 2026 (verify the Staatsblad text, article numbers and exact wording required in Dutch and French). Until verified, findings carry `legal_review: true`.
+Belgian transposition: Belgium missed the 19 December 2025 transposition deadline. A bill (Chamber doc. 56K1532) adds the function to the Code of Economic Law, but secondary sources report it was not yet published in September 2026. Cite the directive (CRD Art. 11a) until the Belgian text is published, and keep `legal_review: true`. Re-check the Belgian Official Gazette before each run.
 
 ## Not covered here
 

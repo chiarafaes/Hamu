@@ -166,7 +166,9 @@ def score_findings(findings):
 
 
 def score_skills(findings, files):
-    """Per skill: per-area scores, skill score = mean of area scores."""
+    """Per skill: per-area scores, and a skill score of 100 minus all deductions
+    in that skill (severity.md: per skill and per area). A mean of area scores
+    was tried first and hid real issues behind many clean areas."""
     result = []
     for skill in SKILLS:
         ran = skill in files
@@ -178,12 +180,8 @@ def score_skills(findings, files):
         for area in sorted(areas):
             score, stats = score_findings(areas[area])
             area_rows.append({"area": area, "score": score, **stats})
-        scored_areas = [a for a in area_rows if a["checks_run"] > 0]
-        skill_score = (
-            round(sum(a["score"] for a in scored_areas) / len(scored_areas))
-            if ran and scored_areas else None
-        )
-        _, totals = score_findings(owned)
+        total_score, totals = score_findings(owned)
+        skill_score = total_score if ran and totals["checks_run"] > 0 else None
         result.append({
             "skill": skill,
             "ran": ran,
@@ -215,20 +213,23 @@ def verdict(findings, context):
     criticals = [f["id"] for f in open_f if f["severity"] == "critical"]
     legal_highs = [f["id"] for f in open_f if f["severity"] == "high" and is_legal_requirement(f, fw)]
     other_highs = [f["id"] for f in open_f if f["severity"] == "high" and f["id"] not in legal_highs]
+    legal = [f["id"] for f in open_f if f.get("legal_review")]
+    legal_note = [f"{len(legal)} open finding(s) need legal review before relying on them."] if legal else []
     if criticals or legal_highs:
         return {
             "verdict": "no_go",
             "reasons": (
                 [f"Open critical: {i}" for i in criticals]
                 + [f"Open high on a law that applies: {i}" for i in legal_highs]
+                + legal_note
             ),
         }
     if other_highs:
         return {
             "verdict": "go_with_conditions",
-            "reasons": [f"Open high (best practice or readiness): {i}" for i in other_highs],
+            "reasons": [f"Open high (best practice or readiness): {i}" for i in other_highs] + legal_note,
         }
-    return {"verdict": "go", "reasons": ["No open criticals and no open legal highs."]}
+    return {"verdict": "go", "reasons": ["No open criticals and no open legal highs."] + legal_note}
 
 
 # ---------------------------------------------------------------- actions, coverage

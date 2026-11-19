@@ -8,6 +8,8 @@ sources:
   - https://www.ejustice.just.fgov.be/ (Code of Economic Law, consolidated)
   - https://www.craftzing.com/our-insights/articles/european-accessibility-act-in-belgium-compliance-complaints-penalties
   - https://www.lexgo.be/en/news-and-articles/14225-making-financial-services-more-accessible
+  - https://www.vlaio.be/nl/nieuws/nieuwe-regels-rond-digitale-toegankelijkheid-voor-e-handelsdiensten
+  - https://www.unizo.be/advies/heeft-u-een-vergunning-nodig-om-een-webshop-te-beginnen
 status: directive verified; Belgian transposition law and the micro-enterprise rule conflict across secondary sources (verify)
 ---
 
@@ -37,7 +39,7 @@ Out of scope: B2B-only services, pure information sites that sell nothing (unles
 
 - Transposed through amendments to the Code of Economic Law and other laws. Secondary sources name the Law of 5 November 2023 for part of the transposition (verify title and date in the Belgian Official Gazette).
 - Market surveillance and enforcement: FPS Economy (Economic Inspection).
-- Micro-enterprises: sources conflict. Some report a transition period until 28 June 2030 rather than a full exemption, one reports an exemption until 2035. Until verified, Hamu treats a Belgian micro service provider as `likely` (not `not_applicable`), runs the checks as `best_practice`, and adds `legal_review: true`.
+- Micro-enterprises (fewer than 10 staff and turnover under EUR 2 million) providing services: per Unizo, VLAIO and a draft FPS Economy guideline, they are exempt until 28 June 2030, with obligations for agreements concluded after that date. One source reported 2035, which could not be confirmed. Hamu treats a Belgian micro service provider as `likely` with the reason "obligations from 28 June 2030", runs the checks as `best_practice`, and adds `legal_review: true` until the FPS Economy final guidance is checked.
 
 ## Duties the checks use
 
