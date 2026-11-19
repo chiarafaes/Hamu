@@ -46,7 +46,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [x] Phase 1b: hamu-security-privacy readiness (ISO 27001, SOC 2, ISO 42001, HIPAA, NIST CSF) and global privacy (CCPA, COPPA, PIPEDA, LGPD, POPIA, app stores) (0.3.0)
 - [x] Phase 2: hamu-accessibility (0.4.0)
 - [x] Phase 3: hamu-performance-ux (0.5.0)
-- [ ] Phase 4: hamu-seo-visibility
+- [x] Phase 4: hamu-seo-visibility (0.6.0)
 - [ ] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers)
 - [ ] Phase 6: test on 2-3 real targets (URL and codebase, Claude Code and Claude app)
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
@@ -55,6 +55,7 @@ Open items:
 - `verify` markers in the hamu-security-privacy references (Belgian article numbers for the withdrawal function and Book XII, AI Omnibus OJ number, CyFun milestones, GBA/APD cookie lifetime). Check against the Belgian Official Gazette, EUR-Lex and CCB before phase 6. Phase 1b adds: LGPD incident deadline wording (business days), HHS tracking guidance status, app store guideline numbers (re-check each run).
 - EAA micro-enterprise treatment in Belgium: sources still conflict (exemption, transition to 2030, or 2035). Treated as `likely` with `legal_review`. Check the Belgian Official Gazette and FPS Economy before phase 6. Also verify the Belgian EAA transposition law title and the regional WAD decree dates.
 - EN 301 549 v4.1.1: watch for its Official Journal citation, then update `en301549.md`.
+- AI crawler user agents and robots.txt behaviour change often: re-check `ai-search.md` against vendor pages before phase 6.
 
 ## Working agreements
 

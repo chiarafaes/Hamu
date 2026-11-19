@@ -59,6 +59,8 @@ Rules of thumb:
 | CWV | Core Web Vitals (LCP, INP, CLS) | PX |
 | UXH | Hamu usability heuristics (own words, based on Nielsen heuristics and ISO 9241-110) | PX |
 | GOOGLE-SEARCH | Google Search Essentials, spam policies, helpful content | SEO |
+| BING-WMG | Bing Webmaster Guidelines (index also used by Copilot and other AI products) | SEO |
+| AI-SEARCH | AI answer engines and AI crawlers (ChatGPT, Claude, Perplexity, Gemini, Copilot, Google AI features) | SEO |
 | SCHEMA | schema.org structured data | SEO |
 
 SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux, SEO = hamu-seo-visibility.
@@ -121,7 +123,8 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 |---|---|
 | CWV | always for web targets (status best_practice; field data needs enough Chrome traffic, else lab only) |
 | UXH | always for web and app targets (status best_practice) |
-| GOOGLE-SEARCH, SCHEMA | always for public web targets; skip for logged-in-only apps |
+| GOOGLE-SEARCH, BING-WMG, SCHEMA | always for public web targets; skip for logged-in-only apps (status best_practice; spam policies and technical requirements carry relation requirement) |
+| AI-SEARCH | always for public web targets (status best_practice) |
 
 ## Output
 
