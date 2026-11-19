@@ -238,7 +238,7 @@ def render(r):
   <p id="count" role="status" aria-live="polite"></p>
   {''.join(groups) or '<p>No findings to show.</p>'}
   <h2 id="coverage">Framework coverage</h2>
-  <div class="table-wrap"><table>
+  <div class="table-wrap" role="region" aria-labelledby="coverage" tabindex="0"><table>
     <caption>Findings per applicable framework</caption>
     <thead><tr><th scope="col">Framework</th><th scope="col">Status</th><th scope="col">Pass</th><th scope="col">Fail</th><th scope="col">Warn</th><th scope="col">Manual</th><th scope="col">Not tested</th><th scope="col">Reason</th></tr></thead>
     <tbody>{fw_rows}</tbody>

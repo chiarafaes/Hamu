@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0 (2026-11-19) Phase 5: hamu-audit-rollup
+
+- `scripts/rollup.py` (standard library, Python 3.9+): loads context and findings, refuses mixed audit ids, merges pointer findings into the owner's finding, scores per area and skill per `severity.md`, decides go / go with conditions / no-go, compares with the previous audit in `.audit/history/` (fixed, new, still open, not rechecked), lists top actions, items needing confirmation, framework coverage and limitations.
+- `render_md.py`: Markdown report following `report-template.md`, sections 1 to 9 and appendix.
+- `render_html.py`: self-contained HTML dashboard with strict CSP, no external requests, filters, light and dark theme, print stylesheet for PDF. Checked with axe-core (WCAG 2.2 AA and best practice): no violations at 375 and 1280 px in both themes.
+- Word only on request, through an environment document skill or a temporary tool. No new dependency.
+- New schema `rollup.schema.json` and `examples/rollup.example.json`. `validate.py` validates roll-up files too.
+- Tests: fixtures (three skills, a merged pointer finding, a pointer whose owner did not run, a previous audit) and 28 unit tests. CI runs them and validates the fixtures.
+- Fix: the `id` and `check_id` patterns in `finding.schema.json` rejected `A11Y.` ids (the prefix allowed letters only). They now allow exactly `SP`, `A11Y`, `PX` and `SEO`. Valid files stay valid, so `schema_version` stays 1.0.
+
 ## 0.6.0 (2026-11-19) Phase 4: hamu-seo-visibility
 
 - `references/checks.md`: 88 `SEO.` checks over 22 domains. Technical checks from a polite crawl (200 URLs, 1 per second, raw vs rendered diff). Content, E-E-A-T, citability, AEO, GEO, SXO and local checks on the 0 to 2 rubric. Links to A11Y, PX and SP owner checks instead of re-measuring.
