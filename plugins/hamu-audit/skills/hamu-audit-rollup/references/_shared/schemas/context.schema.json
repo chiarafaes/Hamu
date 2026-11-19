@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hamu.dev/schemas/context.schema.json",
+  "title": "Hamu audit context",
+  "description": ".audit/context.json. Written by whichever Hamu skill runs first, read and extended by the others. Holds scope, intake answers, detected signals and the applicable frameworks.",
+  "type": "object",
+  "required": ["schema_version", "audit_id", "created_at", "target", "permission", "jurisdiction", "product", "organisation", "applicable_frameworks"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "audit_id": { "type": "string", "pattern": "^[a-z0-9-]+-\\d{8}$", "description": "<target-slug>-<YYYYMMDD>" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "report_language": { "type": "string", "default": "en", "description": "Language of report text. Framework ids stay in English." },
+    "target": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["url", "codebase", "url_and_codebase", "mobile_app"] },
+        "name": { "type": "string" },
+        "urls": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "repo_path": { "type": "string" },
+        "platforms": { "type": "array", "items": { "enum": ["web", "ios", "android", "api", "desktop"] } },
+        "languages": { "type": "array", "items": { "type": "string" }, "description": "Site content languages, e.g. nl, fr, en." }
+      }
+    },
+    "permission": {
+      "type": "object",
+      "required": ["owner_confirmed", "active_testing_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "owner_confirmed": { "type": "boolean", "description": "User confirmed they own the target or have written permission to test it." },
+        "active_testing_allowed": { "type": "boolean", "default": false },
+        "confirmed_at": { "type": "string", "format": "date-time" },
+        "scope_notes": { "type": "string", "description": "e.g. 'staging only', 'no form submissions on production'." }
+      }
+    },
+    "jurisdiction": {
+      "type": "object",
+      "required": ["established_in", "users_in"],
+      "additionalProperties": false,
+      "properties": {
+        "established_in": { "type": "array", "items": { "type": "string" }, "description": "ISO 3166 codes, e.g. BE." },
+        "users_in": {
+          "type": "array",
+          "items": { "enum": ["BE", "EU", "UK", "US", "US-CA", "CA", "BR", "ZA", "GLOBAL"] }
+        },
+        "public_sector": { "type": "boolean", "default": false }
+      }
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "audience": { "enum": ["B2B", "B2C", "both"] },
+        "sells_online": { "type": "boolean" },
+        "payments": { "enum": ["none", "hosted_redirect", "embedded_fields", "direct_card"], "description": "hosted_redirect = e.g. Stripe Checkout/Mollie hosted page. direct_card = card data touches own servers." },
+        "accounts": { "type": "boolean", "description": "Users can register or log in." },
+        "data_categories": {
+          "type": "array",
+          "items": { "enum": ["contact", "account", "behavioural_tracking", "location", "financial", "health", "biometric", "children", "special_category_other", "employee"] }
+        },
+        "children_targeted": { "type": "boolean" },
+        "ai": { "enum": ["none", "ai_features", "chatbot", "generates_content", "high_risk_use"] },
+        "intermediary": { "enum": ["none", "hosting", "marketplace", "online_platform", "search_engine"], "description": "DSA role, if any." },
+        "connected_product": { "type": "boolean", "description": "Software sold with or as a product with digital elements, or IoT companion app." },
+        "medical_purpose": { "type": "boolean" },
+        "sector": {
+          "type": "array",
+          "items": { "enum": ["general", "ecommerce", "finance", "banking", "insurance", "health", "transport", "energy", "telecom", "digital_infrastructure", "ict_services_b2b", "public_admin", "education", "media", "other"] }
+        }
+      }
+    },
+    "organisation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "size": { "enum": ["micro", "small", "medium", "large", "unknown"], "description": "EU SME definition: micro <10 staff and <=EUR 2M turnover or balance; small <50 and <=10M; medium <250 and <=50M turnover or <=43M balance." },
+        "role": { "enum": ["owner_of_product", "agency_for_client", "supplier_to_regulated_entity"], "description": "supplier_to_regulated_entity matters for NIS2 supply chain and DORA." },
+        "goal": { "enum": ["quick_scan", "pre_launch", "certification_prep", "legal_check", "client_report"] },
+        "certification_targets": {
+          "type": "array",
+          "items": { "enum": ["SOC2-T1", "SOC2-T2", "ISO27001", "ISO42001", "HIPAA", "PCI-DSS", "CyFun-BE"] }
+        }
+      }
+    },
+    "detected": {
+      "type": "array",
+      "description": "Signals found by auto-detection. Each one can change applicability.",
+      "items": {
+        "type": "object",
+        "required": ["signal", "evidence", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "signal": { "type": "string", "description": "e.g. payments:stripe_checkout, ai:chatbot_widget, tracking:ga4, accounts:login_form" },
+          "evidence": { "type": "string" },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "confirmed_by_user": { "type": "boolean" }
+        }
+      }
+    },
+    "applicable_frameworks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "enum": ["applies", "likely", "readiness_only", "not_applicable", "unknown"], "description": "readiness_only = voluntary certification the user asked for." },
+          "reason": { "type": "string" },
+          "skills": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "skill": { "type": "string" },
+          "finished_at": { "type": "string", "format": "date-time" },
+          "findings_file": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-security-privacy",
+  "skill_version": "0.1.0",
+  "audit_id": "example-shop-20261119",
+  "run": {
+    "started_at": "2026-11-19T17:35:00+01:00",
+    "finished_at": "2026-11-19T17:52:00+01:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl",
+      "playwright",
+      "npm audit"
+    ],
+    "tools_missing": [
+      "semgrep"
+    ],
+    "reference_freshness": [
+      {
+        "file": "references/gdpr-eprivacy-be.md",
+        "last_verified": "2026-11-19",
+        "stale": false
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "SP.HDR.HSTS#01162c61",
+      "check_id": "SP.HDR.HSTS",
+      "owner_skill": "hamu-security-privacy",
+      "title": "HSTS header missing",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "The site does not tell browsers to always use a secure connection, so visitors can be pushed to an unencrypted version by an attacker on the same network.",
+      "detail_technical": "Response for https://shop.example.be/ has no Strict-Transport-Security header.",
+      "impact": [
+        "security"
+      ],
+      "frameworks": [
+        {
+          "id": "ASVS5",
+          "ref": "V3.4.1",
+          "relation": "requirement"
+        },
+        {
+          "id": "ISO27001",
+          "ref": "A.8.24",
+          "relation": "evidence_for"
+        },
+        {
+          "id": "GDPR",
+          "ref": "Art. 32",
+          "relation": "evidence_for"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "http_header",
+          "location": "https://shop.example.be/",
+          "snippet": "HTTP/2 200; no strict-transport-security header present",
+          "captured_at": "2026-11-19T17:36:10+01:00"
+        }
+      ],
+      "fix": {
+        "summary": "Send HSTS on all HTTPS responses.",
+        "steps": [
+          "Add the header at the CDN or web server.",
+          "Start with a short max-age, raise to 1 year after checking all subdomains use HTTPS."
+        ],
+        "code_example": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+        "effort": "S"
+      },
+      "applies_because": [
+        "target.urls"
+      ]
+    },
+    {
+      "id": "SP.CONSENT.PRE-TRACK#09372467",
+      "check_id": "SP.CONSENT.PRE-TRACK",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Google Analytics loads before consent",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "legal_review": false,
+      "summary_plain": "Visitors are tracked by Google Analytics before they accept cookies. In Belgium this breaks the cookie rules and is a common reason for complaints to the data protection authority.",
+      "detail_technical": "On first load with no consent state, a request to region1.google-analytics.com/g/collect fires and _ga cookies are set before any banner interaction.",
+      "impact": [
+        "legal",
+        "privacy"
+      ],
+      "frameworks": [
+        {
+          "id": "EPRIVACY-BE",
+          "ref": "Art. 10/2 Law of 30 July 2018 (verify in phase 1)",
+          "relation": "requirement"
+        },
+        {
+          "id": "GDPR",
+          "ref": "Art. 6, Art. 7",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "network_request",
+          "location": "https://shop.example.be/ (before consent)",
+          "snippet": "POST https://region1.google-analytics.com/g/collect?v=2&tid=G-XXXX ...",
+          "captured_at": "2026-11-19T17:40:02+01:00"
+        },
+        {
+          "type": "cookie",
+          "location": "https://shop.example.be/ (before consent)",
+          "snippet": "_ga, _ga_XXXX set on .example.be"
+        }
+      ],
+      "fix": {
+        "summary": "Block analytics until opt-in.",
+        "steps": [
+          "Load gtag only after consent, or use Consent Mode v2 with default 'denied' for analytics_storage and ad_storage.",
+          "Re-test with a clean browser profile."
+        ],
+        "effort": "S"
+      },
+      "applies_because": [
+        "jurisdiction.users_in:BE",
+        "detected:tracking:ga4"
+      ],
+      "related": []
+    }
+  ]
+}

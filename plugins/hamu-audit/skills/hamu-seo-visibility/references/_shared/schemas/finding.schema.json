@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hamu.dev/schemas/finding.schema.json",
+  "title": "Hamu findings file",
+  "description": "One file per skill run: .audit/findings/<skill>.json. Every Hamu skill writes this exact shape so the roll-up can merge and deduplicate.",
+  "type": "object",
+  "required": ["schema_version", "skill", "skill_version", "audit_id", "run", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "skill": { "$ref": "#/$defs/skill" },
+    "skill_version": { "type": "string" },
+    "audit_id": { "type": "string", "description": "Copied from .audit/context.json so files from different audits are never merged." },
+    "run": {
+      "type": "object",
+      "required": ["started_at", "runtime", "mode", "targets"],
+      "additionalProperties": false,
+      "properties": {
+        "started_at": { "type": "string", "format": "date-time" },
+        "finished_at": { "type": "string", "format": "date-time" },
+        "runtime": { "enum": ["claude_code", "claude_app", "other"] },
+        "mode": { "enum": ["audit", "guardrails"], "description": "audit = check an existing target. guardrails = pointers while building." },
+        "testing": { "enum": ["passive", "active"], "default": "passive" },
+        "targets": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "tools_used": { "type": "array", "items": { "type": "string" } },
+        "tools_missing": { "type": "array", "items": { "type": "string" }, "description": "Tools the full check needs but were not available. Drives the 'not tested' section." },
+        "reference_freshness": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["file", "last_verified"],
+            "properties": {
+              "file": { "type": "string" },
+              "last_verified": { "type": "string", "format": "date" },
+              "stale": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } }
+  },
+  "$defs": {
+    "skill": {
+      "enum": ["hamu-security-privacy", "hamu-accessibility", "hamu-performance-ux", "hamu-seo-visibility"]
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "check_id", "owner_skill", "title", "status", "severity", "confidence", "method", "summary_plain", "detail_technical", "frameworks", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]{2,4}(\\.[A-Z0-9-]+)+#[a-f0-9]{8}$",
+          "description": "check_id + '#' + first 8 hex chars of sha256(check_id + normalised location). Stable across runs, so re-audits can diff."
+        },
+        "check_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{2,4}(\\.[A-Z0-9-]+)+$",
+          "description": "From the ownership matrix, e.g. SP.HDR.HSTS, A11Y.IMG.ALT, PX.CWV.LCP, SEO.CRAWL.ROBOTS."
+        },
+        "owner_skill": { "$ref": "#/$defs/skill" },
+        "reported_by": { "$ref": "#/$defs/skill", "description": "Set when a non-owner skill notices an owned issue. The roll-up merges it into the owner's finding." },
+        "title": { "type": "string", "maxLength": 120 },
+        "status": {
+          "enum": ["fail", "warn", "pass", "needs_manual", "not_tested", "not_applicable"],
+          "description": "pass findings are kept so coverage tables can show what was checked."
+        },
+        "severity": { "enum": ["critical", "high", "medium", "low", "info"] },
+        "confidence": { "enum": ["high", "medium", "low"] },
+        "method": { "enum": ["automated", "heuristic", "code_review", "manual_required"] },
+        "legal_review": { "type": "boolean", "default": false, "description": "True when the outcome depends on legal interpretation. Report must say 'have a lawyer confirm'." },
+        "summary_plain": { "type": "string", "maxLength": 400, "description": "Executive layer. No jargon, says what is wrong and why it matters." },
+        "detail_technical": { "type": "string", "description": "Technical layer. What was observed, where, and why it fails the requirement." },
+        "impact": {
+          "type": "array",
+          "items": { "enum": ["legal", "security", "privacy", "accessibility", "revenue", "seo", "ai_visibility", "performance", "trust", "operations"] }
+        },
+        "frameworks": {
+          "type": "array",
+          "description": "Every framework this finding maps to. Reference control IDs only, never copy copyrighted control text (ISO, SOC 2, PCI).",
+          "items": {
+            "type": "object",
+            "required": ["id", "relation"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "description": "Framework id from applicability-matrix.md, e.g. GDPR, WCAG22, ASVS5, ISO27001, NIS2-BE." },
+              "ref": { "type": "string", "description": "Article, criterion or control id, e.g. 'Art. 32', '1.1.1', 'V3.4.1', 'A.8.24'." },
+              "level": { "type": "string", "description": "Optional conformance level, e.g. 'AA', 'L1'." },
+              "relation": { "enum": ["requirement", "evidence_for", "best_practice"] }
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "location"],
+            "additionalProperties": false,
+            "properties": {
+              "type": { "enum": ["http_header", "http_response", "dom", "code", "config", "network_request", "cookie", "screenshot", "tool_output", "text", "absence"] },
+              "location": { "type": "string", "description": "URL, file:line, or selector." },
+              "snippet": { "type": "string", "maxLength": 1000, "description": "Redacted. Never store secrets, tokens, passwords or personal data." },
+              "artifact": { "type": "string", "description": "Path under .audit/evidence/ for screenshots or tool output." },
+              "captured_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "fix": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "summary": { "type": "string" },
+            "steps": { "type": "array", "items": { "type": "string" } },
+            "code_example": { "type": "string" },
+            "effort": { "enum": ["S", "M", "L"], "description": "S < 1 day, M 1-5 days, L > 5 days or needs process/org change." }
+          }
+        },
+        "applies_because": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Context keys that made this check apply, e.g. 'jurisdiction.users_in:BE', 'product.payments:direct_card'."
+        },
+        "related": { "type": "array", "items": { "type": "string" }, "description": "Ids of related findings in any skill." },
+        "references": { "type": "array", "items": { "type": "string", "format": "uri" } }
+      }
+    }
+  }
+}

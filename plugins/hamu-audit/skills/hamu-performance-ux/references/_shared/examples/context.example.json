@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "example-shop-20261119",
+  "created_at": "2026-11-19T17:30:00+01:00",
+  "report_language": "en",
+  "target": {
+    "type": "url_and_codebase",
+    "name": "Example Shop",
+    "urls": [
+      "https://shop.example.be"
+    ],
+    "repo_path": "./",
+    "platforms": [
+      "web"
+    ],
+    "languages": [
+      "nl",
+      "fr",
+      "en"
+    ]
+  },
+  "permission": {
+    "owner_confirmed": true,
+    "active_testing_allowed": false,
+    "confirmed_at": "2026-11-19T17:31:00+01:00",
+    "scope_notes": "Passive only on production."
+  },
+  "jurisdiction": {
+    "established_in": [
+      "BE"
+    ],
+    "users_in": [
+      "BE",
+      "EU"
+    ],
+    "public_sector": false
+  },
+  "product": {
+    "audience": "B2C",
+    "sells_online": true,
+    "payments": "hosted_redirect",
+    "accounts": true,
+    "data_categories": [
+      "contact",
+      "account",
+      "behavioural_tracking"
+    ],
+    "children_targeted": false,
+    "ai": "chatbot",
+    "intermediary": "none",
+    "connected_product": false,
+    "medical_purpose": false,
+    "sector": [
+      "ecommerce"
+    ]
+  },
+  "organisation": {
+    "size": "small",
+    "role": "owner_of_product",
+    "goal": "pre_launch",
+    "certification_targets": []
+  },
+  "detected": [
+    {
+      "signal": "payments:mollie_hosted",
+      "evidence": "Checkout redirects to https://www.mollie.com/checkout/...",
+      "confidence": "high",
+      "confirmed_by_user": true
+    },
+    {
+      "signal": "ai:chatbot_widget",
+      "evidence": "Script widget.example-bot.com loaded on all pages",
+      "confidence": "high",
+      "confirmed_by_user": true
+    },
+    {
+      "signal": "tracking:ga4",
+      "evidence": "gtag/js?id=G-XXXX in <head>",
+      "confidence": "high"
+    }
+  ],
+  "applicable_frameworks": [
+    {
+      "id": "GDPR",
+      "status": "applies",
+      "reason": "Processes personal data, established in BE.",
+      "skills": [
+        "hamu-security-privacy"
+      ]
+    },
+    {
+      "id": "EPRIVACY-BE",
+      "status": "applies",
+      "reason": "Uses cookies and tracking for users in BE.",
+      "skills": [
+        "hamu-security-privacy"
+      ]
+    },
+    {
+      "id": "EU-CONSUMER",
+      "status": "applies",
+      "reason": "B2C distance sales.",
+      "skills": [
+        "hamu-security-privacy",
+        "hamu-performance-ux"
+      ]
+    },
+    {
+      "id": "BE-CEL",
+      "status": "applies",
+      "reason": "Established in BE, offers online services.",
+      "skills": [
+        "hamu-security-privacy"
+      ]
+    },
+    {
+      "id": "EAA",
+      "status": "applies",
+      "reason": "B2C e-commerce service, small enterprise (micro exemption does not apply).",
+      "skills": [
+        "hamu-accessibility"
+      ]
+    },
+    {
+      "id": "AIACT-50",
+      "status": "applies",
+      "reason": "Chatbot interacts with natural persons.",
+      "skills": [
+        "hamu-security-privacy"
+      ]
+    },
+    {
+      "id": "PCI-DSS",
+      "status": "likely",
+      "reason": "Hosted redirect payments: reduced scope (likely SAQ A), confirm with payment provider.",
+      "skills": [
+        "hamu-security-privacy"
+      ]
+    },
+    {
+      "id": "NIS2-BE",
+      "status": "not_applicable",
+      "reason": "Small enterprise, e-commerce is not an Annex I/II sector.",
+      "skills": []
+    }
+  ],
+  "runs": []
+}
