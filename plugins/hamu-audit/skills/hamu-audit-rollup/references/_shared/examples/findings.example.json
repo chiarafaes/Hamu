@@ -100,7 +100,7 @@
       "frameworks": [
         {
           "id": "EPRIVACY-BE",
-          "ref": "Art. 10/2 Law of 30 July 2018 (verify in phase 1)",
+          "ref": "Art. 10/2 Law of 30 July 2018",
           "relation": "requirement"
         },
         {

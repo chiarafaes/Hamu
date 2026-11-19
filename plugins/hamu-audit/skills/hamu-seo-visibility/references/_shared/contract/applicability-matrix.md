@@ -1,6 +1,6 @@
 ---
 last_verified: 2026-11-19
-status: draft, thresholds and dates are verified per framework in each skill's references (phase 1-4)
+status: SP rows verified in phase 1a (see hamu-security-privacy references); A11Y, PX and SEO rows are verified in phases 2-4
 ---
 
 # Applicability matrix
@@ -74,7 +74,7 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 | BE-CEL | established_in has BE AND site offers any online service or advertising (disclosure duties apply to almost every business site) | - | not established in BE (check own national equivalent) |
 | GPSR | sells_online AND physical consumer products AND users_in has EU | - | services or digital only |
 | DSA | intermediary is not none | user-generated content or third-party listings detected | intermediary none |
-| CCPA | users_in has US-CA or US AND organisation meets CCPA thresholds (verify in reference) | US users and size unknown | no US users |
+| CCPA | users_in has US-CA or US AND the organisation meets one CCPA threshold: annual gross revenue above USD 26,625,000 (CPI-adjusted value for 2025-2026, next adjustment 1 Jan 2027), OR buys, sells or shares personal information of 100,000 or more California consumers or households, OR earns 50% or more of revenue from selling or sharing personal information | US users and size unknown | no US users |
 | COPPA | users_in has US AND (children_targeted OR actual knowledge of under-13 users) | - | otherwise |
 | PIPEDA / LGPD / POPIA | users_in has CA / BR / ZA | GLOBAL | otherwise |
 
@@ -85,10 +85,10 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 | ASVS5, OWASP-T10 | always (best_practice baseline) | - | - |
 | MASVS | platforms has ios or android | - | web only |
 | CIS | codebase or infra config present (Dockerfile, IaC, server config) | - | URL-only audit (mark not_tested) |
-| NIS2-BE | established_in has BE AND sector in NIS2 Annex I/II AND size medium or large; OR role supplier_to_regulated_entity (supply chain expectations, contractual) | sector fits but size unknown | micro/small outside special cases (DNS, TLD, trust services, public electronic comms: verify) |
+| NIS2-BE | established_in has BE AND sector in NIS2 Annex I/II AND size medium or large (Recommendation 2003/361/EC: 50+ staff, or turnover and balance sheet above EUR 10 million); OR size-independent case: DNS service provider, TLD registry, qualified trust service provider, public electronic communications provider, sole provider of an essential service, entity designated by the CCB; OR role supplier_to_regulated_entity (supply chain expectations, contractual, relation best_practice) | sector fits but size unknown | micro or small and no size-independent case |
 | DORA | sector has finance/banking/insurance AND users_in EU; OR role supplier_to_regulated_entity with financial clients | - | otherwise |
-| CRA | connected_product true, OR software is placed on the EU market as a product (downloadable app, desktop software, SDK) | mobile apps sold or distributed in EU: check whether pure SaaS front-end | pure SaaS / website without a product with digital elements |
-| PLD | software is placed on the EU market as a product (including apps and SaaS-linked products) | - | non-commercial or purely B2B services: verify |
+| CRA | connected_product true, OR software is placed on the EU market as a product (downloadable app, desktop software, SDK, firmware), including its remote data processing solution (Art. 3(2)) | mobile app distributed in the EU that is mainly a client for a SaaS: check whether it is placed on the market as a product | standalone SaaS or website that is not the remote data processing of a product (Commission scope guidance 2026); non-commercial open source |
+| PLD | software is placed on the EU market as a product after 9 Dec 2026 (including apps, AI systems, and software as a service when it is part of a product) | - | software supplied outside a commercial activity (including non-commercial free and open source software) |
 | PSD2 | product is a payment service provider or initiates payments itself | - | merchants using a PSP (the PSP handles SCA) |
 | PCI-DSS | payments is direct_card or embedded_fields | payments is hosted_redirect (reduced scope, likely SAQ A) | payments none |
 | DATA-ACT | connected_product true, OR product is a cloud/data processing service customers may switch away from | - | otherwise |
@@ -105,7 +105,7 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 |---|---|---|---|
 | WCAG22 | always (AA as target, AAA reported as advisory) | - | - |
 | EN301549 | EAA or WAD applies | - | - |
-| EAA | users_in has BE/EU AND audience B2C or both AND product is a service in EAA scope (e-commerce, banking, transport, e-books, electronic communications, audiovisual access) AND NOT (micro AND service-only) | B2C service, scope category unclear | B2B only; micro-enterprise providing services |
+| EAA | users_in has BE/EU AND audience B2C or both AND product is a service in EAA scope (e-commerce, banking, transport, e-books, electronic communications, audiovisual access) AND NOT (micro AND service-only). Micro-enterprise: fewer than 10 staff AND turnover or balance sheet at most EUR 2 million (Directive 2019/882 Art. 3(23), 4(5)). Belgian treatment of micro-enterprises: sources conflict, verify in phase 2 | B2C service, scope category unclear | B2B only; micro-enterprise providing services (EU rule) |
 | WAD | public_sector true AND established_in EU | body governed by public law (e.g. subsidised org): verify | otherwise |
 | ADA | users_in has US AND audience B2C or both | - | otherwise |
 | S508 | US federal agency or federal contractor | - | otherwise |
