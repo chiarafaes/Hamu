@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-11-19) Phase 1b: hamu-security-privacy readiness and global privacy
+
+- Readiness references (ids and own words only): ISO/IEC 27001:2022, SOC 2 Trust Services Criteria, ISO/IEC 42001:2023, NIST CSF 2.0, HIPAA (current Security Rule, proposed update noted as projected July 2027). Each has a manual checklist for process controls.
+- Global privacy references: CCPA/CPRA (thresholds, 2026 regulations on risk assessments, ADMT and cybersecurity audits, GPC display duty), COPPA (2025 amendments, compliance 22 April 2026), PIPEDA (Bill C-36 noted, not law), LGPD, POPIA, Apple and Google Play privacy rules.
+- `checks.md`: 9 new checks (SP.CONSENT.GPC, SP.PRIVACY.US-NOTICE, SP.PRIVACY.US-OPTOUT, SP.PRIVACY.COPPA, SP.PRIVACY.LOCAL-OFFICER, SP.MOBILE.ATT, SP.MOBILE.MANIFEST, SP.CERT.NIST-CSF, SP.CERT.CCPA-PROC), 146 in total. Readiness mapping table from Hamu domains to ISO 27001, SOC 2, NIST CSF, HIPAA and ISO 42001 ids, and the steps to build a readiness view.
+- `SKILL.md`: reference table and readiness step.
+- Shared: `PIPEDA / LGPD / POPIA` split into three framework ids in `applicability-matrix.md`. No schema change.
+
 ## 0.2.0 (2026-11-19) Phase 1a: hamu-security-privacy, EU, Belgium and baseline
 
 - `hamu-security-privacy/references/checks.md`: check catalogue with 137 `SP.` checks over 23 domains, with frameworks, default severity, passive/active/code/manual mode, how to test per runtime, guardrails pointers per build task and pointers to other skills.

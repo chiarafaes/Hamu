@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Hamu audit skills: security, privacy, accessibility, performance, UX and SEO/AI visibility audits for websites and apps, with EU and Belgium depth.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "hamu-audit",
       "source": "./plugins/hamu-audit",
       "description": "Five audit skills that work alone and merge into one report when used together. Readiness checks, not legal advice or certification.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "license": "PolyForm-Noncommercial-1.0.0",
       "keywords": ["audit", "compliance", "gdpr", "wcag", "eaa", "nis2", "seo", "geo", "security", "belgium", "eu"],
       "category": "quality"
