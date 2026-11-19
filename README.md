@@ -4,7 +4,7 @@ Audit skills for Claude that check websites, web apps and mobile apps for securi
 
 Each skill works on its own. Used together they share one scope, never check the same thing twice, and merge into one layered report.
 
-> **Status: 0.1.0, phase 0.** The shared foundation is done. The audit checks are being built. Not ready for real audits yet.
+> **Status: 0.2.0, phase 1a.** `hamu-security-privacy` has its EU, Belgian and technical baseline checks. The other skills are being built. Not tested on real targets yet (phase 6).
 
 ## Free to use, not for sale
 

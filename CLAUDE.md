@@ -42,7 +42,8 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 ## Phase plan
 
 - [x] Phase 0: shared contract, schemas, scaffolds, licensing (0.1.0)
-- [ ] Phase 1: hamu-security-privacy (checks.md, one reference file per framework, audit + guardrails steps)
+- [x] Phase 1a: hamu-security-privacy checks.md, EU/BE and baseline references, audit + guardrails steps (0.2.0)
+- [ ] Phase 1b: hamu-security-privacy readiness (ISO 27001, SOC 2, ISO 42001, HIPAA, NIST CSF) and global privacy (CCPA, COPPA, PIPEDA, LGPD, POPIA, app stores)
 - [ ] Phase 2: hamu-accessibility
 - [ ] Phase 3: hamu-performance-ux
 - [ ] Phase 4: hamu-seo-visibility
@@ -51,8 +52,8 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
 
 Open items:
-- Belgian cookie rule article reference in `shared/examples/findings.example.json` is marked verify.
-- All thresholds in `applicability-matrix.md` (CCPA, NIS2 size exceptions, CRA scope for SaaS, EAA micro exemption) get verified in phase 1.
+- `verify` markers in the hamu-security-privacy references (Belgian article numbers for the withdrawal function and Book XII, AI Omnibus OJ number, CyFun milestones, GBA/APD cookie lifetime). Check against the Belgian Official Gazette, EUR-Lex and CCB before phase 6.
+- EAA micro-enterprise treatment in Belgium: sources conflict. Settle in phase 2.
 
 ## Working agreements
 
