@@ -7,7 +7,7 @@ description: Audit a website or app for accessibility against WCAG 2.2, EN 301 5
 
 Accessibility readiness checks against WCAG 2.2 level AA, with EU and Belgian law on top. Owns every check with prefix `A11Y.`.
 
-> Status: 0.4.0 (phase 2). All WCAG 2.2 A and AA criteria have a check. Not yet tested on real targets (phase 6).
+> Status: 0.9.0. Tested on a real website in Claude Code and in the Claude app (security and privacy skill). Write this version as `skill_version` in the findings file.
 
 This is a readiness check, not legal advice or a conformance certificate. Never write "compliant" or "WCAG certified". An automated scan alone never proves accessibility.
 

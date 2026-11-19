@@ -4,7 +4,7 @@ Audit skills for Claude that check websites, web apps and mobile apps for securi
 
 Each skill works on its own. Used together they share one scope, never check the same thing twice, and merge into one layered report.
 
-> **Status: 0.8.0, phase 6.** All five skills are built and tested on a real website and a codebase in Claude Code. The Claude app test is pending. See `testing/phase-6-results.md`. The other skills are being built. Not tested on real targets yet (phase 6).
+> **Status: 0.9.0, phase 6.** All five skills are built and tested on a real website and a codebase in Claude Code, and the security and privacy skill also in the Claude app. See `testing/phase-6-results.md`. Publishing (phase 7) is next. The other skills are being built. Not tested on real targets yet (phase 6).
 
 ## Free to use, not for sale
 

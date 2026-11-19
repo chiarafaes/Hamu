@@ -14,9 +14,11 @@ The zip contains `SKILL.md` and `references/` including `references/_shared/`.
 
 ## 2. Install in the Claude app
 
-1. Open Claude (web or desktop), Settings, Capabilities, Skills.
-2. Upload `hamu-security-privacy.zip`.
-3. Make sure the skill is switched on, and that a browser tool (Claude in Chrome or the built-in browser) is available in the chat.
+1. Settings, Capabilities: switch on "Create and edit files" (code execution). Skills need it.
+2. Customize, Skills: click +, then Create skill, then Upload a skill, and choose `hamu-security-privacy.zip`.
+3. Switch the skill on, and make sure a browser tool (Claude in Chrome or the built-in browser) is available in the chat.
+
+Source: https://support.claude.com/en/articles/12512180-use-skills-in-claude (Team and Enterprise admins can disable uploads).
 
 ## 3. Run
 

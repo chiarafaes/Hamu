@@ -7,7 +7,7 @@ description: Merge findings from the Hamu audit skills into one deduplicated rep
 
 Merges the findings of the Hamu audit skills into one report: deduplicated, scored, with a go / no-go verdict, a comparison with the previous audit, a Markdown report and an accessible single-file HTML dashboard. PDF comes from the dashboard. Word only on request.
 
-> Status: 0.7.0 (phase 5). Tested on fixtures, not yet on real audits (phase 6).
+> Status: 0.9.0. Tested on a real website in Claude Code and in the Claude app (security and privacy skill). Write this version as `skill_version` in the findings file.
 
 The merging, scoring, verdict and diff are done by a script, not by judgement, so the same input always gives the same report. Do not recompute scores by hand.
 
