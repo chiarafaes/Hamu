@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.0 (2026-11-19) Phase 4: hamu-seo-visibility
+
+- `references/checks.md`: 88 `SEO.` checks over 22 domains. Technical checks from a polite crawl (200 URLs, 1 per second, raw vs rendered diff). Content, E-E-A-T, citability, AEO, GEO, SXO and local checks on the 0 to 2 rubric. Links to A11Y, PX and SP owner checks instead of re-measuring.
+- References: Google Search Essentials and spam policies (including the 2024 policies), Bing, structured data rules and 2025-2026 phase-outs, AI search (Hamu definitions of AEO, GEO, AIO, SXO, AI crawler table by purpose, llms.txt as info only), local search with Belgian specifics, crawl method, rubric examples.
+- `geo-prompt-set.md`: repeatable AI visibility test (prompt set and tracking sheet) because assistants cannot be queried on the owner's behalf.
+- `SKILL.md`: audit steps and guardrails mode.
+- CI: the rubric example check now covers hamu-seo-visibility too.
+- Shared: framework ids `BING-WMG` and `AI-SEARCH` in `applicability-matrix.md`. No schema change.
+
 ## 0.5.0 (2026-11-19) Phase 3: hamu-performance-ux
 
 - `references/checks.md`: 76 `PX.` checks over 15 domains. Performance checks with measured thresholds (CWV, loading, images, third parties, server). UX checks scored with a fixed 0 to 2 rubric, confidence at most medium unless measured. CRO ideas as `info` with hypothesis and metric. Brand checks only with a brand kit. Field data first rule.
