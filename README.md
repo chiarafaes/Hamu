@@ -4,7 +4,7 @@ Audit skills for Claude that check websites, web apps and mobile apps for securi
 
 Each skill works on its own. Used together they share one scope, never check the same thing twice, and merge into one layered report.
 
-> **Status: 0.1.0, phase 0.** The shared foundation is done. The audit checks are being built. Not ready for real audits yet.
+> **Status: 0.2.0, phase 1a.** `hamu-security-privacy` has its EU, Belgian and technical baseline checks. The other skills are being built. Not tested on real targets yet (phase 6).
 
 ## Free to use, not for sale
 
@@ -63,9 +63,11 @@ plugins/hamu-audit/
   skills/<skill>/    SKILL.md + references (shared contract copied into references/_shared)
 scripts/sync-shared.sh
 scripts/validate.py
+scripts/check-content.py
+.github/workflows/ci.yml
 ```
 
-Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI runs `scripts/sync-shared.sh --check` and `scripts/validate.py`.
+Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI (`.github/workflows/ci.yml`) runs on every pull request: `scripts/sync-shared.sh --check` plus `git diff --exit-code` (skill copies match the source), `scripts/validate.py` (JSON examples match the schemas) and `scripts/check-content.py` (reference front matter, no em-dashes).
 
 ## Contributing and questions
 

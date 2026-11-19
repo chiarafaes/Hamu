@@ -10,7 +10,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
   - `hamu-performance-ux` (prefix `PX.`)
   - `hamu-seo-visibility` (prefix `SEO.`)
   - `hamu-audit-rollup` (Markdown, self-contained HTML dashboard, Word/PDF, go/no-go)
-- Source of truth for shared rules: `plugins/hamu-audit/shared/`. Never edit `skills/*/references/_shared/` by hand. After changing shared files run `scripts/sync-shared.sh`, then `scripts/sync-shared.sh --check` and `python3 scripts/validate.py`.
+- Source of truth for shared rules: `plugins/hamu-audit/shared/`. Never edit `skills/*/references/_shared/` by hand. After changing shared files run `scripts/sync-shared.sh`, then `scripts/sync-shared.sh --check`, `python3 scripts/validate.py` and `python3 scripts/check-content.py`. CI runs the same checks on every PR.
 - Every skill follows the shared contract: `intake.md`, `applicability-matrix.md`, `ownership-matrix.md`, `severity.md`, `run-protocol.md`, `report-template.md`, and writes JSON matching `finding.schema.json` / `context.schema.json`.
 - One owner per check. Overlaps are decided in `ownership-matrix.md`. Add a row there before adding a check that another skill could also notice.
 - Breaking schema changes bump `schema_version` and are listed in CHANGELOG.md.
@@ -42,7 +42,8 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 ## Phase plan
 
 - [x] Phase 0: shared contract, schemas, scaffolds, licensing (0.1.0)
-- [ ] Phase 1: hamu-security-privacy (checks.md, one reference file per framework, audit + guardrails steps)
+- [x] Phase 1a: hamu-security-privacy checks.md, EU/BE and baseline references, audit + guardrails steps (0.2.0)
+- [ ] Phase 1b: hamu-security-privacy readiness (ISO 27001, SOC 2, ISO 42001, HIPAA, NIST CSF) and global privacy (CCPA, COPPA, PIPEDA, LGPD, POPIA, app stores)
 - [ ] Phase 2: hamu-accessibility
 - [ ] Phase 3: hamu-performance-ux
 - [ ] Phase 4: hamu-seo-visibility
@@ -51,8 +52,8 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [ ] Phase 7: publish (marketplace install test, README install line, `license` issue label)
 
 Open items:
-- Belgian cookie rule article reference in `shared/examples/findings.example.json` is marked verify.
-- All thresholds in `applicability-matrix.md` (CCPA, NIS2 size exceptions, CRA scope for SaaS, EAA micro exemption) get verified in phase 1.
+- `verify` markers in the hamu-security-privacy references (Belgian article numbers for the withdrawal function and Book XII, AI Omnibus OJ number, CyFun milestones, GBA/APD cookie lifetime). Check against the Belgian Official Gazette, EUR-Lex and CCB before phase 6.
+- EAA micro-enterprise treatment in Belgium: sources conflict. Settle in phase 2.
 
 ## Working agreements
 
