@@ -108,11 +108,11 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 | Framework | applies when | likely when | not_applicable when |
 |---|---|---|---|
 | WCAG22 | always (AA as target, AAA reported as advisory) | - | - |
-| EN301549 | EAA or WAD applies | - | - |
-| EAA | users_in has BE/EU AND audience B2C or both AND product is a service in EAA scope (e-commerce, banking, transport, e-books, electronic communications, audiovisual access) AND NOT (micro AND service-only). Micro-enterprise: fewer than 10 staff AND turnover or balance sheet at most EUR 2 million (Directive 2019/882 Art. 3(23), 4(5)). Belgian treatment of micro-enterprises: sources conflict, verify in phase 2 | B2C service, scope category unclear | B2B only; micro-enterprise providing services (EU rule) |
-| WAD | public_sector true AND established_in EU | body governed by public law (e.g. subsidised org): verify | otherwise |
-| ADA | users_in has US AND audience B2C or both | - | otherwise |
-| S508 | US federal agency or federal contractor | - | otherwise |
+| EN301549 | EAA or WAD applies (v3.2.1 harmonised, maps to WCAG 2.1; v4.1.1 published Sept 2026, maps to WCAG 2.2, presumption of conformity after OJ citation) | - | - |
+| EAA | users_in has BE/EU AND audience B2C or both AND product is a service in EAA scope (e-commerce, banking, transport, e-books, electronic communications, audiovisual access) AND NOT (micro AND service-only). Micro-enterprise: fewer than 10 staff AND turnover or balance sheet at most EUR 2 million (Directive 2019/882 Art. 3(23), 4(5)). Applies since 28 June 2025 | B2C service, scope category unclear; OR micro service provider established in BE (Belgian sources conflict on exemption vs transition period, run as best_practice with legal_review, see hamu-accessibility eaa.md) | B2B only; micro-enterprise providing services outside BE (EU rule) |
+| WAD | public_sector true AND established_in EU (BE: federal Law of 19 July 2018, regional and community decrees, BOSA control body for federal bodies) | body governed by public law, e.g. subsidised organisation, school, hospital (legal_review) | otherwise |
+| ADA | Title II: public_sector true AND established_in US (WCAG 2.1 AA, compliance 26 Apr 2027 or 26 Apr 2028 by population size). Title III: users_in has US AND audience B2C or both (no regulation, relation best_practice) | - | otherwise |
+| S508 | US federal agency, or sells ICT to one (WCAG 2.0 AA via E205.4) | - | otherwise |
 
 ### Performance and search
 
