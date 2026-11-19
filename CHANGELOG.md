@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2026-11-19) Phase 3: hamu-performance-ux
+
+- `references/checks.md`: 76 `PX.` checks over 15 domains. Performance checks with measured thresholds (CWV, loading, images, third parties, server). UX checks scored with a fixed 0 to 2 rubric, confidence at most medium unless measured. CRO ideas as `info` with hypothesis and metric. Brand checks only with a brand kit. Field data first rule.
+- References: Core Web Vitals (thresholds unchanged: LCP 2.5 s, INP 200 ms, CLS 0.1; Lighthouse 13 insight audits), performance method and budgets per site type, usability heuristics in own words, conversion patterns, store listing quality. Rubric examples for every rubric check.
+- `SKILL.md`: audit steps (sample, field data, lab runs, screenshots at 375, 768, 1280 px, rubric pass) and guardrails mode.
+- CI: `scripts/check-content.py` fails when a rubric check has no rubric examples.
+- Shared: new framework id `UXH` (Hamu usability heuristics, best practice) in `applicability-matrix.md`. No schema change.
+
 ## 0.4.0 (2026-11-19) Phase 2: hamu-accessibility
 
 - `references/checks.md`: 81 `A11Y.` checks over 15 domains. Every WCAG 2.2 level A and AA criterion (55) has a check, with level, WCAG version, default severity, axe-core rule ids and test method. AAA as advisory. Framework mapping rule per law version (EN 301 549 v3.2.1 / v4.1.1, ADA, Section 508). Guardrails pointers per build task.

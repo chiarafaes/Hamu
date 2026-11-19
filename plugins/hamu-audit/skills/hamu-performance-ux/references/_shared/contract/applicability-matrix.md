@@ -57,6 +57,7 @@ Rules of thumb:
 | APPLE-ASRG | Apple App Store Review Guidelines | SP, PX |
 | GOOGLE-PLAY | Google Play Developer Program Policies | SP, PX |
 | CWV | Core Web Vitals (LCP, INP, CLS) | PX |
+| UXH | Hamu usability heuristics (own words, based on Nielsen heuristics and ISO 9241-110) | PX |
 | GOOGLE-SEARCH | Google Search Essentials, spam policies, helpful content | SEO |
 | SCHEMA | schema.org structured data | SEO |
 
@@ -118,7 +119,8 @@ SP = hamu-security-privacy, A11Y = hamu-accessibility, PX = hamu-performance-ux,
 
 | Framework | applies when |
 |---|---|
-| CWV | always for web targets |
+| CWV | always for web targets (status best_practice; field data needs enough Chrome traffic, else lab only) |
+| UXH | always for web and app targets (status best_practice) |
 | GOOGLE-SEARCH, SCHEMA | always for public web targets; skip for logged-in-only apps |
 
 ## Output
