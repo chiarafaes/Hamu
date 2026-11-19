@@ -7,7 +7,8 @@ sources:
   - https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
   - https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/
   - https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/
-status: original regulation verified; Omnibus changes cross-checked with several secondary sources, Official Journal reference marked verify
+  - https://eur-lex.europa.eu/eli/reg/2026/1744/oj
+status: original regulation and Omnibus Official Journal reference verified; Omnibus dates beyond publication cross-checked with secondary sources
 ---
 
 # AI Act
@@ -24,7 +25,7 @@ status: original regulation verified; Omnibus changes cross-checked with several
 | 2 Dec 2027 | Annex III stand-alone high-risk systems (moved from 2 Aug 2026) | secondary sources, verify |
 | 2 Aug 2028 | High-risk systems that are safety components of Annex I products (moved from 2 Aug 2027) | secondary sources, verify |
 
-The Digital Omnibus on AI is reported as adopted as Regulation (EU) 2026/1744 and in force since 27 July 2026. Verify the number and dates on EUR-Lex before quoting them in a report. Also verify whether the Omnibus changed the Art. 4 AI literacy duty for deployers.
+The Digital Omnibus on AI is Regulation (EU) 2026/1744 (Official Journal L series, 24 July 2026, in force 27 July 2026, https://eur-lex.europa.eu/eli/reg/2026/1744/oj). Secondary sources report that it softens the Art. 4 AI literacy duty and adds two prohibited practices to Art. 5 that apply from 2 December 2026 (verify the article text before quoting).
 
 ## Art. 50 transparency (AIACT-50)
 

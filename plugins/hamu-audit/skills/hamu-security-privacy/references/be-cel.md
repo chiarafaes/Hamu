@@ -22,7 +22,7 @@ Applies to almost every business site of an organisation established in Belgium.
 | General information duties of enterprises to consumers | Code of Economic Law, Book VI, Art. VI.2 | verify article |
 | Distance contracts: pre-contract information | Code of Economic Law, Book VI, Art. VI.45 | cross-checked with secondary sources |
 | Withdrawal right of 14 days | Art. VI.47 | cross-checked with secondary sources |
-| Online withdrawal function (Directive (EU) 2023/2673) | Belgian transposition reported as the Law of 19 July 2026 amending the Code of Economic Law | verify Staatsblad publication and article |
+| Online withdrawal function (Directive (EU) 2023/2673) | Belgian transposition bill (Chamber doc. 56K1532) not yet published in the Belgian Official Gazette as of September 2026 per secondary sources. Earlier reports of a "Law of 19 July 2026" could not be confirmed. Draft article numbers differ between sources (VI.47, VI.48, VI.61/1) | verify publication before citing a Belgian article |
 | Company details on website (name, legal form, registered office, enterprise number, words "rechtspersonenregister"/"registre des personnes morales" with the court) | Code of Companies and Associations (WVV/CSA), Art. 2:20 | cross-checked with VLAIO and legal commentary |
 | Electronic direct marketing (opt-in) | Book XII and Royal Decree of 4 April 2003 | verify |
 

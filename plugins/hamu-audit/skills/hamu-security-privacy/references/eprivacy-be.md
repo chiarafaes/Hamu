@@ -37,7 +37,7 @@ The GBA/APD published a cookie checklist in 2023. It is not exhaustive and adds 
 Enforcement: the GBA/APD ordered Belgian news sites in 2024-2025 to add a reject button on the first layer after complaints by noyb. Use this as context in the executive layer, not as a fine prediction.
 
 Open items (verify before use in a finding):
-- Maximum consent validity and maximum cookie lifetime the GBA/APD expects. Do not state a number until verified on the checklist PDF.
+- Maximum consent validity and maximum cookie lifetime: the checklist asks for a "limited period" and for the duration of each cookie to be listed, without a fixed number in the sources checked (2026-11-19). Report long lifetimes (over 13 months) as `warn` with `legal_review: true`, never as a hard rule.
 - Whether audience measurement cookies can be exempt from consent in Belgium. Default: treat analytics as needing consent.
 
 ## Strictly necessary (no consent needed)
