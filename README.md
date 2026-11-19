@@ -4,7 +4,7 @@ Audit skills for Claude that check websites, web apps and mobile apps for securi
 
 Each skill works on its own. Used together they share one scope, never check the same thing twice, and merge into one layered report.
 
-> **Status: 0.4.0, phase 2.** `hamu-security-privacy` and `hamu-accessibility` have their checks. Performance/UX, SEO and the roll-up are being built. The other skills are being built. Not tested on real targets yet (phase 6).
+> **Status: 0.5.0, phase 3.** `hamu-security-privacy`, `hamu-accessibility` and `hamu-performance-ux` have their checks. SEO and the roll-up are being built. The other skills are being built. Not tested on real targets yet (phase 6).
 
 ## Free to use, not for sale
 

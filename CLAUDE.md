@@ -45,7 +45,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
 - [x] Phase 1a: hamu-security-privacy checks.md, EU/BE and baseline references, audit + guardrails steps (0.2.0)
 - [x] Phase 1b: hamu-security-privacy readiness (ISO 27001, SOC 2, ISO 42001, HIPAA, NIST CSF) and global privacy (CCPA, COPPA, PIPEDA, LGPD, POPIA, app stores) (0.3.0)
 - [x] Phase 2: hamu-accessibility (0.4.0)
-- [ ] Phase 3: hamu-performance-ux
+- [x] Phase 3: hamu-performance-ux (0.5.0)
 - [ ] Phase 4: hamu-seo-visibility
 - [ ] Phase 5: hamu-audit-rollup (merge, dedupe, scoring, re-audit diff, renderers)
 - [ ] Phase 6: test on 2-3 real targets (URL and codebase, Claude Code and Claude app)
