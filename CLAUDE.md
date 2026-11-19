@@ -10,7 +10,7 @@ Hamu is a Claude Code plugin marketplace with one plugin, `hamu-audit`: five ski
   - `hamu-performance-ux` (prefix `PX.`)
   - `hamu-seo-visibility` (prefix `SEO.`)
   - `hamu-audit-rollup` (Markdown, self-contained HTML dashboard, Word/PDF, go/no-go)
-- Source of truth for shared rules: `plugins/hamu-audit/shared/`. Never edit `skills/*/references/_shared/` by hand. After changing shared files run `scripts/sync-shared.sh`, then `scripts/sync-shared.sh --check` and `python3 scripts/validate.py`.
+- Source of truth for shared rules: `plugins/hamu-audit/shared/`. Never edit `skills/*/references/_shared/` by hand. After changing shared files run `scripts/sync-shared.sh`, then `scripts/sync-shared.sh --check`, `python3 scripts/validate.py` and `python3 scripts/check-content.py`. CI runs the same checks on every PR.
 - Every skill follows the shared contract: `intake.md`, `applicability-matrix.md`, `ownership-matrix.md`, `severity.md`, `run-protocol.md`, `report-template.md`, and writes JSON matching `finding.schema.json` / `context.schema.json`.
 - One owner per check. Overlaps are decided in `ownership-matrix.md`. Add a row there before adding a check that another skill could also notice.
 - Breaking schema changes bump `schema_version` and are listed in CHANGELOG.md.

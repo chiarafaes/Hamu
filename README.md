@@ -63,9 +63,11 @@ plugins/hamu-audit/
   skills/<skill>/    SKILL.md + references (shared contract copied into references/_shared)
 scripts/sync-shared.sh
 scripts/validate.py
+scripts/check-content.py
+.github/workflows/ci.yml
 ```
 
-Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI runs `scripts/sync-shared.sh --check` and `scripts/validate.py`.
+Edit shared files only in `plugins/hamu-audit/shared/`, then run `scripts/sync-shared.sh`. CI (`.github/workflows/ci.yml`) runs on every pull request: `scripts/sync-shared.sh --check` plus `git diff --exit-code` (skill copies match the source), `scripts/validate.py` (JSON examples match the schemas) and `scripts/check-content.py` (reference front matter, no em-dashes).
 
 ## Contributing and questions
 
