@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-performance-ux",
+  "skill_version": "0.7.0",
+  "audit_id": "fixture-shop-20261119",
+  "run": {
+    "started_at": "2026-11-19T10:00:00+01:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl"
+    ],
+    "tools_missing": []
+  },
+  "findings": [
+    {
+      "id": "PX.CWV.LCP#44444444",
+      "check_id": "PX.CWV.LCP",
+      "owner_skill": "hamu-performance-ux",
+      "title": "LCP 3.1 s on mobile",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for LCP 3.1 s on mobile.",
+      "detail_technical": "Technical detail for LCP 3.1 s on mobile.",
+      "frameworks": [
+        {
+          "id": "CWV",
+          "ref": "LCP",
+          "relation": "best_practice"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence PX.CWV.LCP#44444444"
+        }
+      ],
+      "fix": {
+        "summary": "Fix LCP 3.1 s on mobile",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "PX.CTA.PRIMARY#55555555",
+      "check_id": "PX.CTA.PRIMARY",
+      "owner_skill": "hamu-performance-ux",
+      "title": "Primary CTA below the fold",
+      "status": "warn",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Primary CTA below the fold.",
+      "detail_technical": "Technical detail for Primary CTA below the fold.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence PX.CTA.PRIMARY#55555555"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Primary CTA below the fold",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SEO.LINK.REL#66666666",
+      "check_id": "SEO.LINK.REL",
+      "owner_skill": "hamu-seo-visibility",
+      "title": "Affiliate links without rel sponsored",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Affiliate links without rel sponsored.",
+      "detail_technical": "Technical detail for Affiliate links without rel sponsored.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SEO.LINK.REL#66666666"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Affiliate links without rel sponsored",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      },
+      "reported_by": "hamu-performance-ux"
+    }
+  ]
+}

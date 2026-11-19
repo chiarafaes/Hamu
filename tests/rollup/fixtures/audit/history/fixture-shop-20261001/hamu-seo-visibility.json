@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-seo-visibility",
+  "skill_version": "0.6.0",
+  "audit_id": "fixture-shop-20261001",
+  "run": {
+    "started_at": "2026-10-01T10:00:00+02:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl"
+    ],
+    "tools_missing": []
+  },
+  "findings": [
+    {
+      "id": "SEO.CRAWL.ROBOTS#88888888",
+      "check_id": "SEO.CRAWL.ROBOTS",
+      "owner_skill": "hamu-seo-visibility",
+      "title": "robots.txt blocks CSS",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for robots.txt blocks CSS.",
+      "detail_technical": "Technical detail for robots.txt blocks CSS.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SEO.CRAWL.ROBOTS#88888888"
+        }
+      ],
+      "fix": {
+        "summary": "Fix robots.txt blocks CSS",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    }
+  ]
+}

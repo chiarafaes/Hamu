@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "skill": "hamu-security-privacy",
+  "skill_version": "0.7.0",
+  "audit_id": "fixture-shop-20261119",
+  "run": {
+    "started_at": "2026-11-19T10:00:00+01:00",
+    "runtime": "claude_code",
+    "mode": "audit",
+    "testing": "passive",
+    "targets": [
+      "https://shop.example.be"
+    ],
+    "tools_used": [
+      "curl"
+    ],
+    "tools_missing": [
+      "osv-scanner"
+    ]
+  },
+  "findings": [
+    {
+      "id": "SP.CONSENT.PRE-TRACK#aaaaaaaa",
+      "check_id": "SP.CONSENT.PRE-TRACK",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Analytics fire before consent",
+      "status": "fail",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for Analytics fire before consent.",
+      "detail_technical": "Technical detail for Analytics fire before consent.",
+      "frameworks": [
+        {
+          "id": "EPRIVACY-BE",
+          "ref": "Art. 10/2 Law of 30 July 2018",
+          "relation": "requirement"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.CONSENT.PRE-TRACK#aaaaaaaa"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Analytics fire before consent",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.HDR.CSP#bbbbbbbb",
+      "check_id": "SP.HDR.CSP",
+      "owner_skill": "hamu-security-privacy",
+      "title": "No Content-Security-Policy",
+      "status": "fail",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for No Content-Security-Policy.",
+      "detail_technical": "Technical detail for No Content-Security-Policy.",
+      "frameworks": [
+        {
+          "id": "ASVS5",
+          "ref": "V3",
+          "relation": "best_practice"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.HDR.CSP#bbbbbbbb"
+        }
+      ],
+      "fix": {
+        "summary": "Fix No Content-Security-Policy",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "M"
+      }
+    },
+    {
+      "id": "SP.DNS.DMARC#cccccccc",
+      "check_id": "SP.DNS.DMARC",
+      "owner_skill": "hamu-security-privacy",
+      "title": "DMARC policy is none",
+      "status": "warn",
+      "severity": "medium",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for DMARC policy is none.",
+      "detail_technical": "Technical detail for DMARC policy is none.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.DNS.DMARC#cccccccc"
+        }
+      ],
+      "fix": {
+        "summary": "Fix DMARC policy is none",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.TLS.HTTPS#dddddddd",
+      "check_id": "SP.TLS.HTTPS",
+      "owner_skill": "hamu-security-privacy",
+      "title": "HTTPS everywhere",
+      "status": "pass",
+      "severity": "high",
+      "confidence": "high",
+      "method": "automated",
+      "summary_plain": "Plain summary for HTTPS everywhere.",
+      "detail_technical": "Technical detail for HTTPS everywhere.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.TLS.HTTPS#dddddddd"
+        }
+      ],
+      "fix": {
+        "summary": "Fix HTTPS everywhere",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.LOG.ALERT#eeeeeeee",
+      "check_id": "SP.LOG.ALERT",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Security alerts need confirmation",
+      "status": "needs_manual",
+      "severity": "medium",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Security alerts need confirmation.",
+      "detail_technical": "Technical detail for Security alerts need confirmation.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.LOG.ALERT#eeeeeeee"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Security alerts need confirmation",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    },
+    {
+      "id": "SP.DEPS.VULN#ffffffff",
+      "check_id": "SP.DEPS.VULN",
+      "owner_skill": "hamu-security-privacy",
+      "title": "Dependencies not scanned",
+      "status": "not_tested",
+      "severity": "high",
+      "confidence": "medium",
+      "method": "automated",
+      "summary_plain": "Plain summary for Dependencies not scanned.",
+      "detail_technical": "Technical detail for Dependencies not scanned.",
+      "frameworks": [],
+      "evidence": [
+        {
+          "type": "text",
+          "location": "https://shop.example.be/",
+          "snippet": "evidence SP.DEPS.VULN#ffffffff"
+        }
+      ],
+      "fix": {
+        "summary": "Fix Dependencies not scanned",
+        "steps": [
+          "Step one"
+        ],
+        "effort": "S"
+      }
+    }
+  ]
+}

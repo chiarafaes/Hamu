@@ -15,6 +15,9 @@ rol_v = Draft202012Validator(json.loads((SCHEMAS / "rollup.schema.json").read_te
 
 target = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "plugins/hamu-audit/shared/examples"
 files = [p for p in target.rglob("*.json") if "history" not in p.parts]
+if not files:
+    print(f"FAIL {target}: no JSON files found")
+    sys.exit(1)
 bad = 0
 for p in files:
     data = json.loads(p.read_text())

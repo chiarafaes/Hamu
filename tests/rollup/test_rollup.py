@@ -12,7 +12,7 @@ import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SCRIPTS = ROOT / "plugins/hamu-audit/skills/hamu-audit-rollup/scripts"
-FIXTURE = pathlib.Path(__file__).resolve().parent / "fixtures" / "audit" / ".audit"
+FIXTURE = pathlib.Path(__file__).resolve().parent / "fixtures" / "audit"
 sys.path.insert(0, str(SCRIPTS))
 
 import rollup  # noqa: E402

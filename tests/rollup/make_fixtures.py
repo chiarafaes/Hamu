@@ -4,7 +4,8 @@ python3 tests/rollup/make_fixtures.py
 Invented data only."""
 import json, pathlib
 
-ROOT = pathlib.Path(__file__).resolve().parent / "fixtures" / "audit" / ".audit"
+ROOT = pathlib.Path(__file__).resolve().parent / "fixtures" / "audit"
+# Not named .audit: that folder is git-ignored.
 AUDIT = "fixture-shop-20261119"
 OLD = "fixture-shop-20261001"
 
